@@ -20,7 +20,7 @@ ShellRoot {
 
         PowerButton {
             command: "systemctl reboot"
-            icon: "replay"
+            icon: "restart_alt"
             keybind: Qt.Key_R
             widthType: IconButton.Width.Narrow
         }
