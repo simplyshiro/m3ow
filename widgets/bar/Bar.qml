@@ -1,10 +1,8 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Effects
 import Quickshell
 import Quickshell.Wayland
 
-import qs.components
 import qs.styles
 import qs.styles.elevation
 import qs.styles.motion
