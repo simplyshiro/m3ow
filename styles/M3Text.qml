@@ -21,10 +21,11 @@ Text {
         LabelSmall
     }
 
-    property bool emphasized: false
-    property int grad: Color.scheme === Color.dark ? -25 : 0
-    property real opsz: font.pixelSize * 72 / 96
     property int typeScale: M3Text.TypeScale.BodyMedium
+
+    property bool emphasized: false
+
+    property int grad: Color.scheme === Color.dark ? -25 : 0
     property int weight: emphasized && typeScale === M3Text.TypeScale.DisplayLarge ? 500
         : emphasized && typeScale === M3Text.TypeScale.DisplayMedium ? 500
         : emphasized && typeScale === M3Text.TypeScale.DisplaySmall ? 500
@@ -56,6 +57,8 @@ Text {
         : typeScale === M3Text.TypeScale.LabelMedium ? 500
         : typeScale === M3Text.TypeScale.LabelSmall ? 500
         : null
+
+    property real opsz: font.pixelSize * 72 / 96
 
     color: Color.scheme._onSurface
     font.family: "Google Sans"
