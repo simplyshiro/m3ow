@@ -7,7 +7,8 @@ import Quickshell.Io
 Singleton {
     id: root
 
-    property bool darkTheme: scheme === dark
+    readonly property bool darkTheme: scheme === dark
+
     property QtObject scheme: light
 
     function toggleTheme() {
@@ -24,7 +25,7 @@ Singleton {
     Process {
         id: footToggleTheme
 
-        property string signal: root.darkTheme ? "-SIGUSR1" : "-SIGUSR2"
+        readonly property string signal: root.darkTheme ? "-SIGUSR1" : "-SIGUSR2"
 
         command: ["sh", "-c", `pkill ${signal} foot`]
     }
@@ -32,7 +33,7 @@ Singleton {
     Process {
         id: gsettingsToggleTheme
 
-        property string scheme: root.darkTheme ? "'prefer-dark'" : "'prefer-light'"
+        readonly property string scheme: root.darkTheme ? "'prefer-dark'" : "'prefer-light'"
 
         command: ["sh", "-c", `gsettings set org.gnome.desktop.interface color-scheme ${scheme}`]
     }
