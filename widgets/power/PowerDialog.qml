@@ -42,13 +42,13 @@ Variants {
                 contentItem {
                     Keys.onPressed: event => {
                         if (event.key === Qt.Key_Escape) {
-                            loader.active = false
+                            loader.active = false;
                         } else {
                             for (let i = 0; i < root.powerButtons.length; i++) {
-                                let powerButton = root.powerButtons[i]
+                                let powerButton = root.powerButtons[i];
 
                                 if (event.key === powerButton.keybind) {
-                                    powerButton.execute()
+                                    powerButton.execute();
                                 }
                             }
                         }

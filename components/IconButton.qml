@@ -128,10 +128,10 @@ Rectangle {
         hoverEnabled: true
         onClicked: {
             if (root.checkable) {
-                root.internalChecked = !root.internalChecked
+                root.internalChecked = !root.internalChecked;
             }
 
-            root.clicked()
+            root.clicked();
         }
 
         StateLayer {

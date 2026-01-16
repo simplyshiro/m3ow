@@ -17,7 +17,7 @@ QtObject {
     }
 
     function execute() {
-        process.startDetached()
-        Qt.quit()
+        process.startDetached();
+        Qt.quit();
     }
 }

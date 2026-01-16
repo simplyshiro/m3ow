@@ -39,10 +39,12 @@ Rectangle {
                 readonly property int id: index + 1
                 readonly property bool focused: Hyprland.focusedWorkspace?.id === id
 
-                readonly property var occupied: Hyprland.workspaces.values.reduce((acc, curr) => {
-                    acc[curr.id] = curr.lastIpcObject.windows >= 0
-                    return acc
-                }, {})
+                readonly property var occupied: {
+                    Hyprland.workspaces.values.reduce((acc, curr) => {
+                        acc[curr.id] = curr.lastIpcObject.windows >= 0;
+                        return acc;
+                    }, {})
+                }
 
                 color: focused ? root.pillColorFocused : occupied[id] ? root.pillColorOccupied : root.pillColor
                 implicitHeight: root.pillSize
@@ -68,17 +70,17 @@ Rectangle {
         onWheel: (wheel) => {
             if (wheel.angleDelta.y > 0) {
                 if (Hyprland.focusedWorkspace.id === 1) {
-                    Hyprland.dispatch(`workspace ${repeater.model}`)
+                    Hyprland.dispatch(`workspace ${repeater.model}`);
                 } else {
-                    Hyprland.dispatch("workspace -1")
+                    Hyprland.dispatch("workspace -1");
                 }
             }
 
             if (wheel.angleDelta.y < 0) {
                 if (Hyprland.focusedWorkspace.id === repeater.model) {
-                    Hyprland.dispatch("workspace 1")
+                    Hyprland.dispatch("workspace 1");
                 } else {
-                    Hyprland.dispatch("workspace +1")
+                    Hyprland.dispatch("workspace +1");
                 }
             }
         }
