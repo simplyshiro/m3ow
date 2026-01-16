@@ -23,7 +23,7 @@ RectangularShadow {
         : elevation === AmbientShadow.Elevation.Level4 ? 1.2 * 10
         : elevation === AmbientShadow.Elevation.Level5 ? 1.2 * 12
         : null
-    color: Qt.alpha(Color.scheme.shadow, 0.15)
+    color: elevation === AmbientShadow.Elevation.Level0 ? "transparent" : Qt.alpha(Color.scheme.shadow, 0.15)
     spread: elevation === AmbientShadow.Elevation.Level0 ? 0
         : elevation === AmbientShadow.Elevation.Level1 ? 1
         : elevation === AmbientShadow.Elevation.Level2 ? 2

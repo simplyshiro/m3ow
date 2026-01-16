@@ -23,7 +23,7 @@ RectangularShadow {
         : elevation === KeyShadow.Elevation.Level4 ? 1.2 * 3
         : elevation === KeyShadow.Elevation.Level5 ? 1.2 * 4
         : null
-    color: Qt.alpha(Color.scheme.shadow, 0.3)
+    color: elevation === KeyShadow.Elevation.Level0 ? "transparent" : Qt.alpha(Color.scheme.shadow, 0.3)
     offset.y: elevation === KeyShadow.Elevation.Level0 ? 0
         : elevation === KeyShadow.Elevation.Level1 ? 1
         : elevation === KeyShadow.Elevation.Level2 ? 1
