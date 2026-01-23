@@ -181,6 +181,7 @@ Rectangle {
                 : root.size === M3Button.Size.Xlarge ? 40
                 : null
             icon: root.icon
+            verticalAlignment: Text.AlignVCenter
             visible: root.icon
             weight: mouseArea.pressed ? 300 : mouseArea.containsMouse ? 600 : 400
         }
@@ -195,6 +196,7 @@ Rectangle {
                 : root.size === M3Button.Size.Large ? M3Text.TypeScale.HeadlineSmall
                 : root.size === M3Button.Size.Xlarge ? M3Text.TypeScale.HeadlineLarge
                 : null
+            verticalAlignment: Text.AlignVCenter
         }
     }
 }
