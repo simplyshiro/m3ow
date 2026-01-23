@@ -169,6 +169,6 @@ Rectangle {
         fill: root.internalChecked ? 1 : mouseArea.containsMouse ? 1 : 0
         font.pixelSize: iconSize
         icon: root.icon
-        weight: mouseArea.containsMouse ? 600 : 400
+        weight: mouseArea.pressed ? 300 : mouseArea.containsMouse ? 600 : 400
     }
 }

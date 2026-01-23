@@ -182,7 +182,7 @@ Rectangle {
                 : null
             icon: root.icon
             visible: root.icon
-            weight: mouseArea.containsMouse ? 600 : 400
+            weight: mouseArea.pressed ? 300 : mouseArea.containsMouse ? 600 : 400
         }
 
         M3Text {
