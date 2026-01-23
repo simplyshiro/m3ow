@@ -25,7 +25,7 @@ Text {
 
     property bool emphasized: false
 
-    property int grad: Color.scheme === Color.dark ? -25 : 0
+    property int grad: Color.darkTheme ? -25 : 0
     property int weight: emphasized && typeScale === M3Text.TypeScale.DisplayLarge ? 500
         : emphasized && typeScale === M3Text.TypeScale.DisplayMedium ? 500
         : emphasized && typeScale === M3Text.TypeScale.DisplaySmall ? 500
