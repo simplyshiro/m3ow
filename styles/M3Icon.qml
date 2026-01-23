@@ -1,5 +1,7 @@
 import QtQuick
 
+import qs.styles.motion
+
 M3Text {
     required property string icon
 
@@ -18,4 +20,8 @@ M3Text {
     horizontalAlignment: Text.AlignHCenter
     text: icon
     verticalAlignment: Text.AlignVCenter
+
+    Behavior on fill {
+        ExpressiveFastSpatial {}
+    }
 }
