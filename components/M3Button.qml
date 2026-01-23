@@ -190,6 +190,7 @@ Rectangle {
             id: label
 
             color: root.checkable && root.enabled && root.internalChecked ? rowLayout.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? rowLayout.unselectedIconLabelColor : root.enabled ? rowLayout.iconLabelColor : Qt.alpha(Color.scheme._onSurface, 0.38)
+            grad: root.internalChecked ? 125 : mouseArea.pressed ? -50 : mouseArea.containsMouse ? 50 : Color.darkTheme ? -25 : 0
             text: root.text
             typeScale: root.size === M3Button.Size.Xsmall || root.size === M3Button.Size.Small ? M3Text.TypeScale.LabelLarge
                 : root.size === M3Button.Size.Medium ? M3Text.TypeScale.TitleMedium
