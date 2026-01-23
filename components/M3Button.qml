@@ -182,12 +182,17 @@ Rectangle {
                 : null
             icon: root.icon
             visible: root.icon
+            weight: mouseArea.containsMouse ? 600 : 400
 
             Behavior on color {
                 ExpressiveFastColor {}
             }
 
             Behavior on fill {
+                ExpressiveFastSpatial {}
+            }
+
+            Behavior on weight {
                 ExpressiveFastSpatial {}
             }
         }

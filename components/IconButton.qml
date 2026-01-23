@@ -169,12 +169,17 @@ Rectangle {
         fill: root.internalChecked ? 1 : mouseArea.containsMouse ? 1 : 0
         font.pixelSize: iconSize
         icon: root.icon
+        weight: mouseArea.containsMouse ? 600 : 400
 
         Behavior on color {
             ExpressiveFastColor {}
         }
 
         Behavior on fill {
+            ExpressiveFastSpatial {}
+        }
+
+        Behavior on weight {
             ExpressiveFastSpatial {}
         }
     }
