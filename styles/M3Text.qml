@@ -98,7 +98,7 @@ Text {
     font.preferTypoLineMetrics: true
 
     font.variableAxes: {
-        "GRAD": 100,
+        "GRAD": grad,
         "ROND": 0,
         "opsz": opsz,
         "slnt": 0,
