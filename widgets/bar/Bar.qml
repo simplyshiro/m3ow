@@ -67,7 +67,7 @@ Variants {
                     RowLayout {
                         anchors.bottom: parent.bottom
                         anchors.left: parent.left
-                        anchors.leftMargin: 40
+                        anchors.leftMargin: 12
                         anchors.top: parent.top
                         spacing: 8
 
@@ -77,7 +77,7 @@ Variants {
                     RowLayout {
                         anchors.bottom: parent.bottom
                         anchors.right: parent.right
-                        anchors.rightMargin: 40
+                        anchors.rightMargin: 12
                         anchors.top: parent.top
                         spacing: 8
 
