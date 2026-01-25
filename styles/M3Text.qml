@@ -99,10 +99,7 @@ Text {
 
     font.variableAxes: {
         "GRAD": grad,
-        "ROND": 0,
         "opsz": opsz,
-        "slnt": 0,
-        "wdth": 100,
         "wght": weight
     }
 
