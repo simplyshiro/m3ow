@@ -171,7 +171,6 @@ Rectangle {
             : null
 
         M3Icon {
-            Layout.topMargin: label.font.pixelSize * 0.115
             anchors.verticalCenter: parent.verticalCenter
             color: root.checkable && root.enabled && root.internalChecked ? row.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? row.unselectedIconLabelColor : root.enabled ? row.iconLabelColor : Qt.alpha(Color.scheme._onSurface, 0.38)
             fill: root.internalChecked ? 1 : mouseArea.containsMouse ? 1 : 0
@@ -181,7 +180,7 @@ Rectangle {
                 : root.size === M3Button.Size.Xlarge ? 40
                 : null
             icon: root.icon
-            verticalAlignment: Text.AlignVCenter
+            lineHeight: root.height
             visible: root.icon
             weight: mouseArea.pressed ? 300 : mouseArea.containsMouse ? 600 : 400
         }

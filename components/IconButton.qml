@@ -164,10 +164,11 @@ Rectangle {
             : root.size === IconButton.Size.Xlarge ? 40
             : null
 
-        anchors.fill: parent
+        anchors.centerIn: parent
         color: root.checkable && root.enabled && root.internalChecked ? selectedIconColor : root.checkable && root.enabled && !root.internalChecked ? unselectedIconColor : root.enabled ? iconColor : Qt.alpha(Color.scheme._onSurface, 0.38)
         fill: root.internalChecked ? 1 : mouseArea.containsMouse ? 1 : 0
         font.pixelSize: iconSize
+        lineHeight: root.height
         icon: root.icon
         weight: mouseArea.pressed ? 300 : mouseArea.containsMouse ? 600 : 400
     }
