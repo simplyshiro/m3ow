@@ -191,14 +191,26 @@ Rectangle {
 
             anchors.verticalCenter: parent.verticalCenter
             color: root.checkable && root.enabled && root.internalChecked ? row.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? row.unselectedIconLabelColor : root.enabled ? row.iconLabelColor : Qt.alpha(Color.scheme._onSurface, 0.38)
-            grad: root.internalChecked ? 125 : mouseArea.pressed ? -50 : mouseArea.containsMouse ? 50 : 0
-            text: root.text
-            typeScale: root.size === M3Button.Size.Xsmall || root.size === M3Button.Size.Small ? M3Text.TypeScale.LabelLarge
-                : root.size === M3Button.Size.Medium ? M3Text.TypeScale.TitleMedium
-                : root.size === M3Button.Size.Large ? M3Text.TypeScale.HeadlineSmall
-                : root.size === M3Button.Size.Xlarge ? M3Text.TypeScale.HeadlineLarge
+            font.letterSpacing: root.size === M3Button.Size.Xsmall || root.size === M3Button.Size.Small ? 0.1
+                : root.size === M3Button.Size.Medium ? 0.15
+                : root.size === M3Button.Size.Large || root.size === M3Button.Size.Xlarge ? 0
                 : null
+            font.pixelSize: root.size === M3Button.Size.Xsmall || root.size === M3Button.Size.Small ? 14
+                : root.size === M3Button.Size.Medium ? 16
+                : root.size === M3Button.Size.Large ? 24
+                : root.size === M3Button.Size.Xlarge ? 32
+                : null
+            grad: root.internalChecked ? 125 : mouseArea.pressed ? -50 : mouseArea.containsMouse ? 50 : 0
+            lineHeight: root.size === M3Button.Size.Xsmall || root.size === M3Button.Size.Small ? 20
+                : root.size === M3Button.Size.Medium ? 24
+                : root.size === M3Button.Size.Large ? 32
+                : root.size === M3Button.Size.Xlarge ? 40
+                : null
+            text: root.text
             verticalAlignment: Text.AlignVCenter
+            weight: root.size === M3Button.Size.Xsmall || root.size === M3Button.Size.Small || root.size === M3Button.Size.Medium ? 500
+                : root.size === M3Button.Size.Large || root.size === M3Button.Size.XLarge ? 400
+                : null
         }
     }
 }
