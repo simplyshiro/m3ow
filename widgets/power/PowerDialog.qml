@@ -65,19 +65,19 @@ Variants {
                 Rectangle {
                     id: rectangle
 
-                    readonly property real padding: 40
+                    readonly property real leadingTrailingSpace: 48
 
                     anchors.centerIn: parent
                     color: Color.scheme.surfaceContainer
-                    implicitHeight: row.height + padding * 2
-                    implicitWidth: row.width + padding * 2
-                    radius: Shape.cornerValue.extraExtraLarge
+                    implicitHeight: row.height + leadingTrailingSpace * 2
+                    implicitWidth: row.width + leadingTrailingSpace * 2
+                    radius: Shape.cornerValue.extraLarge
 
                     Row {
                         id: row
 
                         anchors.centerIn: parent
-                        spacing: 8
+                        spacing: 12
 
                         Repeater {
                             model: root.powerButtons
