@@ -58,7 +58,7 @@ Text {
         : typeScale === M3Text.TypeScale.LabelSmall ? 500
         : null
 
-    property real opsz: font.pixelSize * 96 / 72
+    property real opsz: font.pointSize
 
     color: Color.scheme._onSurface
     font.family: "Google Sans"
