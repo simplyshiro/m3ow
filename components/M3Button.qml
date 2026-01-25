@@ -106,6 +106,10 @@ Rectangle {
         ExpressiveFastColor {}
     }
 
+    Behavior on implicitWidth {
+        ExpressiveFastSpatial {}
+    }
+
     Behavior on radius {
         ExpressiveFastSpatial {}
     }
