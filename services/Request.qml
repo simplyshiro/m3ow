@@ -14,6 +14,8 @@ Singleton {
                 } else {
                     console.warn(xhr.statusText);
                 }
+
+                xhr.onreadystatechange = null;
             }
         }
 
