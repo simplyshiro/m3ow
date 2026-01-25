@@ -1,7 +1,6 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import QtQuick.Layouts
 import Quickshell
 import Quickshell.Hyprland
 import Quickshell.Wayland
@@ -74,7 +73,7 @@ Variants {
                     implicitWidth: row.width + padding * 2
                     radius: Shape.cornerValue.extraExtraLarge
 
-                    RowLayout {
+                    Row {
                         id: row
 
                         anchors.centerIn: parent

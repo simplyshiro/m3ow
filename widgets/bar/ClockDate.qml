@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.Layouts
 
 import qs.components
 import qs.services
@@ -12,16 +11,17 @@ Rectangle {
 
     color: "transparent"
     implicitHeight: 40
-    implicitWidth: rowLayout.width + padding * 2
+    implicitWidth: row.width + padding * 2
     radius: height
 
-    RowLayout {
-        id: rowLayout
+    Row {
+        id: row
 
         anchors.centerIn: parent
         spacing: 8
 
         M3Text {
+            anchors.verticalCenter: parent.verticalCenter
             color: Color.scheme._onSurfaceVariant
             grad: mouseArea.pressed ? -50 : mouseArea.containsMouse ? 50 : 0
             text: Qt.formatDateTime(Clock.date, "ddd, MMM d")
@@ -30,6 +30,7 @@ Rectangle {
         }
 
         M3Text {
+            anchors.verticalCenter: parent.verticalCenter
             grad: mouseArea.pressed ? -50 : mouseArea.containsMouse ? 50 : 0
             text: Qt.formatDateTime(Clock.date, "HH:mm")
             typeScale: M3Text.TypeScale.LabelLarge

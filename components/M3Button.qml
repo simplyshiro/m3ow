@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.Layouts
 
 import qs.styles
 import qs.styles.elevation
@@ -96,7 +95,7 @@ Rectangle {
         : size === M3Button.Size.Large ? 96
         : size === M3Button.Size.Xlarge ? 136
         : null
-    implicitWidth: rowLayout.width + leadingTrailingSpace * 2
+    implicitWidth: row.width + leadingTrailingSpace * 2
     radius: mouseArea.pressed ? shapePressedMorph : internalChecked ? selectedContainerShape : containerShape
 
     Behavior on border.color {
@@ -147,8 +146,8 @@ Rectangle {
         }
     }
 
-    RowLayout {
-        id: rowLayout
+    Row {
+        id: row
 
         readonly property color iconLabelColor: root.colorType === M3Button.Color.Elevated || root.colorType === M3Button.Color.Standard ? Color.scheme.primary
             : root.colorType === M3Button.Color.Filled ? Color.scheme._onPrimary
@@ -173,7 +172,8 @@ Rectangle {
 
         M3Icon {
             Layout.topMargin: label.font.pixelSize * 0.115
-            color: root.checkable && root.enabled && root.internalChecked ? rowLayout.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? rowLayout.unselectedIconLabelColor : root.enabled ? rowLayout.iconLabelColor : Qt.alpha(Color.scheme._onSurface, 0.38)
+            anchors.verticalCenter: parent.verticalCenter
+            color: root.checkable && root.enabled && root.internalChecked ? row.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? row.unselectedIconLabelColor : root.enabled ? row.iconLabelColor : Qt.alpha(Color.scheme._onSurface, 0.38)
             fill: root.internalChecked ? 1 : mouseArea.containsMouse ? 1 : 0
             font.pixelSize: root.size === M3Button.Size.Xsmall ? 20
                 : root.size === M3Button.Size.Small || root.size === M3Button.Size.Medium ? 24
@@ -189,7 +189,8 @@ Rectangle {
         M3Text {
             id: label
 
-            color: root.checkable && root.enabled && root.internalChecked ? rowLayout.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? rowLayout.unselectedIconLabelColor : root.enabled ? rowLayout.iconLabelColor : Qt.alpha(Color.scheme._onSurface, 0.38)
+            anchors.verticalCenter: parent.verticalCenter
+            color: root.checkable && root.enabled && root.internalChecked ? row.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? row.unselectedIconLabelColor : root.enabled ? row.iconLabelColor : Qt.alpha(Color.scheme._onSurface, 0.38)
             grad: root.internalChecked ? 125 : mouseArea.pressed ? -50 : mouseArea.containsMouse ? 50 : 0
             text: root.text
             typeScale: root.size === M3Button.Size.Xsmall || root.size === M3Button.Size.Small ? M3Text.TypeScale.LabelLarge
