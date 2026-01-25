@@ -45,6 +45,6 @@ RectangularShadow {
     }
 
     Behavior on offset.y {
-        ExpressiveFastEffects {}
+        ExpressiveFastSpatial {}
     }
 }
