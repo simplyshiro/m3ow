@@ -18,8 +18,8 @@ Singleton {
             scheme = dark
         }
 
-        gsettingsToggleTheme.startDetached()
-        footToggleTheme.startDetached()
+        footToggleTheme.running = true;
+        gsettingsToggleTheme.running = true;
     }
 
     Process {
