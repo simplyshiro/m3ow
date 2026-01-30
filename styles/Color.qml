@@ -27,7 +27,7 @@ Singleton {
 
         readonly property string signal: root.darkTheme ? "-SIGUSR1" : "-SIGUSR2"
 
-        command: ["sh", "-c", `pkill ${signal} foot`]
+        command: ["pkill", signal, "foot"]
     }
 
     Process {
@@ -35,7 +35,7 @@ Singleton {
 
         readonly property string scheme: root.darkTheme ? "'prefer-dark'" : "'prefer-light'"
 
-        command: ["sh", "-c", `gsettings set org.gnome.desktop.interface color-scheme ${scheme}`]
+        command: ["gsettings", "set", "org.gnome.desktop.interface", "color-scheme", scheme]
     }
 
     QtObject {
