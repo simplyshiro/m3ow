@@ -11,7 +11,7 @@ M3Text {
     font.pixelSize: 24
 
     font.variableAxes: {
-        "FILL": fill,
+        "FILL": fill.toFixed(1),
         "GRAD": grad,
         "opsz": opsz,
         "wght": weight
