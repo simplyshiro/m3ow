@@ -1,6 +1,7 @@
 import QtQuick
 
-SpringAnimation {
-    damping: 1.0 - 0.8
-    spring: 200 / 100
+NumberAnimation {
+    duration: 650
+    easing.bezierCurve: [0.39, 1.29, 0.35, 0.98, 1, 1]
+    easing.type: Easing.BezierSpline
 }
