@@ -128,10 +128,10 @@ Text {
     }
 
     Behavior on grad {
-        ExpressiveFastSpatial {}
+        ExpressiveFastEffects {}
     }
 
     Behavior on weight {
-        ExpressiveFastSpatial {}
+        ExpressiveFastEffects {}
     }
 }

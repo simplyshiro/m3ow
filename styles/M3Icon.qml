@@ -22,6 +22,6 @@ M3Text {
     verticalAlignment: Text.AlignVCenter
 
     Behavior on fill {
-        ExpressiveFastSpatial {}
+        ExpressiveFastEffects {}
     }
 }
