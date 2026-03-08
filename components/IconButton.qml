@@ -168,8 +168,8 @@ Rectangle {
         color: root.checkable && root.enabled && root.internalChecked ? selectedIconColor : root.checkable && root.enabled && !root.internalChecked ? unselectedIconColor : root.enabled ? iconColor : Qt.alpha(Color.scheme._onSurface, 0.38)
         fill: root.internalChecked ? 1 : mouseArea.containsMouse ? 1 : 0
         font.pixelSize: iconSize
-        lineHeight: root.height
         icon: root.icon
+        lineHeight: root.height
         weight: mouseArea.pressed ? 300 : mouseArea.containsMouse ? 600 : 400
     }
 }

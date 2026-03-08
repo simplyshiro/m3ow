@@ -19,8 +19,8 @@ Variants {
             WlrLayershell.layer: WlrLayer.Background
             anchors.bottom: true
             anchors.left: true
-            anchors.right: true
             anchors.top: true
+            anchors.right: true
             color: "transparent"
             screen: scope.modelData
 
