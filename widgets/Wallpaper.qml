@@ -14,8 +14,6 @@ Variants {
         required property ShellScreen modelData
 
         PanelWindow {
-            id: panelWindow
-
             WlrLayershell.layer: WlrLayer.Background
             anchors.bottom: true
             anchors.left: true
@@ -30,8 +28,8 @@ Variants {
                 cache: false
                 fillMode: Image.PreserveAspectCrop
                 source: `${Quickshell.shellDir}/wallpaper`
-                sourceSize.height: panelWindow.screen.height
-                sourceSize.width: panelWindow.screen.width
+                sourceSize.height: parent.height
+                sourceSize.width: parent.width
             }
 
             Rectangle {
