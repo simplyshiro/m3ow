@@ -4,7 +4,7 @@ import QtQuick
 import Quickshell
 
 Singleton {
-    readonly property QtObject cornerValue: QtObject {
+    readonly property QtObject corner: QtObject {
         readonly property real none: 0
         readonly property real extraSmall: 4
         readonly property real small: 8

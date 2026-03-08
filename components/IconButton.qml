@@ -49,9 +49,9 @@ Rectangle {
         : null
 
     readonly property real containerShape: shape === IconButton.Shape.Round ? height
-        : shape === IconButton.Shape.Square && (size === IconButton.Size.Xsmall || size === IconButton.Size.Small) ? Shape.cornerValue.medium
-        : shape === IconButton.Shape.Square && size === IconButton.Size.Medium ? Shape.cornerValue.large
-        : shape === IconButton.Shape.Square && (size === IconButton.Size.Large || size === IconButton.Size.Xlarge) ? Shape.cornerValue.extraLarge
+        : shape === IconButton.Shape.Square && (size === IconButton.Size.Xsmall || size === IconButton.Size.Small) ? Shape.corner.medium
+        : shape === IconButton.Shape.Square && size === IconButton.Size.Medium ? Shape.corner.large
+        : shape === IconButton.Shape.Square && (size === IconButton.Size.Large || size === IconButton.Size.Xlarge) ? Shape.corner.extraLarge
         : null
     readonly property real leadingTrailingSpace: widthType === IconButton.Width.Default && size === IconButton.Size.Xsmall ? 6
         : widthType === IconButton.Width.Default && size === IconButton.Size.Small ? 8
@@ -69,13 +69,13 @@ Rectangle {
         : widthType === IconButton.Width.Wide && size === IconButton.Size.Xlarge ? 72
         : null
     readonly property real selectedContainerShape: shape === IconButton.Shape.Square ? height
-        : shape === IconButton.Shape.Round && (size === IconButton.Size.Xsmall || size === IconButton.Size.Small) ? Shape.cornerValue.medium
-        : shape === IconButton.Shape.Round && size === IconButton.Size.Medium ? Shape.cornerValue.large
-        : shape === IconButton.Shape.Round && (size === IconButton.Size.Large || size === IconButton.Size.Xlarge) ? Shape.cornerValue.extraLarge
+        : shape === IconButton.Shape.Round && (size === IconButton.Size.Xsmall || size === IconButton.Size.Small) ? Shape.corner.medium
+        : shape === IconButton.Shape.Round && size === IconButton.Size.Medium ? Shape.corner.large
+        : shape === IconButton.Shape.Round && (size === IconButton.Size.Large || size === IconButton.Size.Xlarge) ? Shape.corner.extraLarge
         : null
-    readonly property real shapePressedMorph: size === IconButton.Size.Xsmall || size === IconButton.Size.Small ? Shape.cornerValue.small
-        : size === IconButton.Size.Medium ? Shape.cornerValue.medium
-        : size === IconButton.Size.Large || size === IconButton.Size.Xlarge ? Shape.cornerValue.large
+    readonly property real shapePressedMorph: size === IconButton.Size.Xsmall || size === IconButton.Size.Small ? Shape.corner.small
+        : size === IconButton.Size.Medium ? Shape.corner.medium
+        : size === IconButton.Size.Large || size === IconButton.Size.Xlarge ? Shape.corner.large
         : null
 
     property bool checkable

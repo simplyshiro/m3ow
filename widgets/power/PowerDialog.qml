@@ -71,7 +71,7 @@ Variants {
                     color: Color.scheme.surfaceContainer
                     implicitHeight: row.height + leadingTrailingSpace * 2
                     implicitWidth: row.width + leadingTrailingSpace * 2
-                    radius: Shape.cornerValue.extraLarge
+                    radius: Shape.corner.extraLarge
 
                     Row {
                         id: row

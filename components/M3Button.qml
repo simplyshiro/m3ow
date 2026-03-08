@@ -48,9 +48,9 @@ Rectangle {
         : null
 
     readonly property real containerShape: shape === M3Button.Shape.Round ? height
-        : shape === M3Button.Shape.Square && (size === M3Button.Size.Xsmall || size === M3Button.Size.Small) ? Shape.cornerValue.medium
-        : shape === M3Button.Shape.Square && size === M3Button.Size.Medium ? Shape.cornerValue.large
-        : shape === M3Button.Shape.Square && (size === M3Button.Size.Large || size === M3Button.Size.Xlarge) ? Shape.cornerValue.extraLarge
+        : shape === M3Button.Shape.Square && (size === M3Button.Size.Xsmall || size === M3Button.Size.Small) ? Shape.corner.medium
+        : shape === M3Button.Shape.Square && size === M3Button.Size.Medium ? Shape.corner.large
+        : shape === M3Button.Shape.Square && (size === M3Button.Size.Large || size === M3Button.Size.Xlarge) ? Shape.corner.extraLarge
         : null
     readonly property real leadingTrailingSpace: size === M3Button.Size.Xsmall ? 12
         : size === M3Button.Size.Small ? 16
@@ -59,13 +59,13 @@ Rectangle {
         : size === M3Button.Size.Xlarge ? 64
         : null
     readonly property real selectedContainerShape: shape === M3Button.Shape.Square ? height
-        : shape === M3Button.Shape.Round && (size === M3Button.Size.Xsmall || size === M3Button.Size.Small) ? Shape.cornerValue.medium
-        : shape === M3Button.Shape.Round && size === M3Button.Size.Medium ? Shape.cornerValue.large
-        : shape === M3Button.Shape.Round && (size === M3Button.Size.Large || size === M3Button.Size.Xlarge) ? Shape.cornerValue.extraLarge
+        : shape === M3Button.Shape.Round && (size === M3Button.Size.Xsmall || size === M3Button.Size.Small) ? Shape.corner.medium
+        : shape === M3Button.Shape.Round && size === M3Button.Size.Medium ? Shape.corner.large
+        : shape === M3Button.Shape.Round && (size === M3Button.Size.Large || size === M3Button.Size.Xlarge) ? Shape.corner.extraLarge
         : null
-    readonly property real shapePressedMorph: size === M3Button.Size.Xsmall || size === M3Button.Size.Small ? Shape.cornerValue.small
-        : size === M3Button.Size.Medium ? Shape.cornerValue.medium
-        : size === M3Button.Size.Large || size === M3Button.Size.Xlarge ? Shape.cornerValue.large
+    readonly property real shapePressedMorph: size === M3Button.Size.Xsmall || size === M3Button.Size.Small ? Shape.corner.small
+        : size === M3Button.Size.Medium ? Shape.corner.medium
+        : size === M3Button.Size.Large || size === M3Button.Size.Xlarge ? Shape.corner.large
         : null
 
     property bool checkable
