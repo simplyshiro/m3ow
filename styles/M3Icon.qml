@@ -7,7 +7,7 @@ M3Text {
 
     property real fill
 
-    font.family: "Material Symbols Sharp"
+    font.family: "Material Symbols Outlined"
     font.pixelSize: 24
 
     font.variableAxes: {
