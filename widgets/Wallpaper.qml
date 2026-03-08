@@ -14,6 +14,7 @@ Variants {
         required property ShellScreen modelData
 
         PanelWindow {
+            WlrLayershell.exclusionMode: ExclusionMode.Ignore
             WlrLayershell.layer: WlrLayer.Background
             anchors.bottom: true
             anchors.left: true
