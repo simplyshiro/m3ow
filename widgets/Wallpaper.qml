@@ -38,7 +38,7 @@ Variants {
                 color: Color.darkTheme ? Qt.alpha(Color.scheme.scrim, 0.16) : "transparent"
 
                 Behavior on color {
-                    ExpressiveFastColor {}
+                    ExpressiveSlowColor {}
                 }
             }
         }
