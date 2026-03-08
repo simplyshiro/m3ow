@@ -21,8 +21,6 @@ Text {
         LabelSmall
     }
 
-    property int typeScale: M3Text.TypeScale.BodyMedium
-
     property bool emphasized: false
 
     property int grad: 0
@@ -57,6 +55,7 @@ Text {
         : typeScale === M3Text.TypeScale.LabelMedium ? 500
         : typeScale === M3Text.TypeScale.LabelSmall ? 500
         : null
+    property int typeScale: M3Text.TypeScale.BodyMedium
 
     property real opsz: font.pointSize
 

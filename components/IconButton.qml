@@ -32,6 +32,8 @@ Rectangle {
         Wide
     }
 
+    required property string icon
+
     readonly property color containerColor: colorType === IconButton.Color.Filled ? Color.scheme.primary
         : colorType === IconButton.Color.Tonal ? Color.scheme.secondaryContainer
         : colorType === IconButton.Color.Outlined || colorType === IconButton.Color.Standard ? "transparent"
@@ -76,8 +78,6 @@ Rectangle {
         : size === IconButton.Size.Large || size === IconButton.Size.Xlarge ? Shape.cornerValue.large
         : null
 
-    required property string icon
-
     property bool checkable
     property bool checked
     property bool enabled: true
@@ -89,8 +89,6 @@ Rectangle {
     property int widthType: IconButton.Width.Default
 
     signal clicked
-
-    onCheckedChanged: internalChecked = checked
 
     border.color: colorType === IconButton.Color.Outlined && !internalChecked ? Color.scheme.outlineVariant : "transparent"
     border.width: size === IconButton.Size.Xsmall || size === IconButton.Size.Small || size === IconButton.Size.Medium ? 1
@@ -105,6 +103,7 @@ Rectangle {
         : size === IconButton.Size.Xlarge ? 136
         : null
     implicitWidth: icon.font.pixelSize + leadingTrailingSpace * 2
+    onCheckedChanged: internalChecked = checked
     radius: mouseArea.pressed ? shapePressedMorph : internalChecked ? selectedContainerShape : containerShape
 
     Behavior on border.color {

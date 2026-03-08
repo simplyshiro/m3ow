@@ -10,10 +10,11 @@ import qs.styles.motion
 Rectangle {
     id: root
 
-    readonly property real padding: 16
     readonly property color pillColor: Color.scheme._onSurfaceVariant
     readonly property color pillColorOccupied: Color.scheme._onSurface
     readonly property color pillColorFocused: Color.scheme.primary
+
+    readonly property real padding: 16
     readonly property real pillSize: 8
     readonly property real pillSizeFocused: pillSize * 3
     readonly property real pillSpacing: 8

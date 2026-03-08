@@ -28,6 +28,8 @@ Rectangle {
         Standard
     }
 
+    required property string text
+
     readonly property color containerColor: colorType === M3Button.Color.Elevated ? Color.scheme.surfaceContainerLow
         : colorType === M3Button.Color.Filled ? Color.scheme.primary
         : colorType === M3Button.Color.Tonal ? Color.scheme.secondaryContainer
@@ -66,8 +68,6 @@ Rectangle {
         : size === M3Button.Size.Large || size === M3Button.Size.Xlarge ? Shape.cornerValue.large
         : null
 
-    required property string text
-
     property bool checkable
     property bool checked
     property bool enabled: true
@@ -80,8 +80,6 @@ Rectangle {
     property string icon
 
     signal clicked
-
-    onCheckedChanged: internalChecked = checked
 
     border.color: colorType === M3Button.Color.Outlined && !internalChecked ? Color.scheme.outlineVariant : "transparent"
     border.width: size === M3Button.Size.Xsmall || size === M3Button.Size.Small || size === M3Button.Size.Medium ? 1
@@ -96,6 +94,7 @@ Rectangle {
         : size === M3Button.Size.Xlarge ? 136
         : null
     implicitWidth: row.width + leadingTrailingSpace * 2
+    onCheckedChanged: internalChecked = checked
     radius: mouseArea.pressed ? shapePressedMorph : internalChecked ? selectedContainerShape : containerShape
 
     Behavior on border.color {

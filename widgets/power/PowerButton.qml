@@ -8,6 +8,7 @@ QtObject {
 
     required property string command
     required property string icon
+
     property int keybind
     property int colorType: IconButton.Color.Tonal
     property int widthType: IconButton.Width.Default
