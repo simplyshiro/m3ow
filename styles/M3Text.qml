@@ -126,12 +126,4 @@ Text {
     Behavior on color {
         ExpressiveFastColor {}
     }
-
-    Behavior on grad {
-        ExpressiveFastEffects {}
-    }
-
-    Behavior on weight {
-        ExpressiveFastEffects {}
-    }
 }
