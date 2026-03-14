@@ -102,7 +102,7 @@ Rectangle {
         : size === IconButton.Size.Large ? 96
         : size === IconButton.Size.Xlarge ? 136
         : null
-    implicitWidth: icon.font.pixelSize + leadingTrailingSpace * 2
+    implicitWidth: icon.fontSize + leadingTrailingSpace * 2
     onCheckedChanged: internalChecked = checked
     radius: mouseArea.pressed ? shapePressedMorph : internalChecked ? selectedContainerShape : containerShape
 
@@ -157,16 +157,14 @@ Rectangle {
             : root.colorType === IconButton.Color.Outlined || root.colorType === IconButton.Color.Standard ? Color.scheme._onSurfaceVariant
             : null
 
-        readonly property int iconSize: root.size === IconButton.Size.Xsmall ? 20
+        anchors.centerIn: parent
+        color: root.checkable && root.enabled && root.internalChecked ? selectedIconColor : root.checkable && root.enabled && !root.internalChecked ? unselectedIconColor : root.enabled ? iconColor : Qt.alpha(Color.scheme._onSurface, 0.38)
+        fill: root.internalChecked ? 1 : mouseArea.containsMouse ? 1 : 0
+        fontSize: root.size === IconButton.Size.Xsmall ? 20
             : root.size === IconButton.Size.Small || root.size === IconButton.Size.Medium ? 24
             : root.size === IconButton.Size.Large ? 32
             : root.size === IconButton.Size.Xlarge ? 40
             : null
-
-        anchors.centerIn: parent
-        color: root.checkable && root.enabled && root.internalChecked ? selectedIconColor : root.checkable && root.enabled && !root.internalChecked ? unselectedIconColor : root.enabled ? iconColor : Qt.alpha(Color.scheme._onSurface, 0.38)
-        fill: root.internalChecked ? 1 : mouseArea.containsMouse ? 1 : 0
-        font.pixelSize: iconSize
         icon: root.icon
         lineHeight: root.height
         weight: mouseArea.pressed ? 300 : mouseArea.containsMouse ? 600 : 400

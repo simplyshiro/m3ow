@@ -3,6 +3,8 @@ import QtQuick
 import qs.styles.motion
 
 Text {
+    id: root
+
     enum TypeScale {
         DisplayLarge,
         DisplayMedium,
@@ -57,7 +59,23 @@ Text {
         : null
     property int typeScale: M3Text.TypeScale.BodyMedium
 
-    property real opsz: font.pointSize
+    property int fontSize: typeScale === M3Text.TypeScale.DisplayLarge ? 57
+        : typeScale === M3Text.TypeScale.DisplayMedium ? 45
+        : typeScale === M3Text.TypeScale.DisplaySmall ? 36
+        : typeScale === M3Text.TypeScale.HeadlineLarge ? 32
+        : typeScale === M3Text.TypeScale.HeadlineMedium ? 28
+        : typeScale === M3Text.TypeScale.HeadlineSmall ? 24
+        : typeScale === M3Text.TypeScale.TitleLarge ? 22
+        : typeScale === M3Text.TypeScale.TitleMedium ? 16
+        : typeScale === M3Text.TypeScale.TitleSmall ? 14
+        : typeScale === M3Text.TypeScale.BodyLarge ? 16
+        : typeScale === M3Text.TypeScale.BodyMedium ? 14
+        : typeScale === M3Text.TypeScale.BodySmall ? 12
+        : typeScale === M3Text.TypeScale.LabelLarge ? 14
+        : typeScale === M3Text.TypeScale.LabelMedium ? 12
+        : typeScale === M3Text.TypeScale.LabelSmall ? 11
+        : null
+    property real opsz: fontMetrics.font.pointSize
 
     color: Color.scheme._onSurface
     font.family: "Google Sans"
@@ -78,22 +96,7 @@ Text {
         : typeScale === M3Text.TypeScale.LabelMedium ? 0.1
         : typeScale === M3Text.TypeScale.LabelSmall ? 0.1
         : null
-    font.pixelSize: typeScale === M3Text.TypeScale.DisplayLarge ? 57
-        : typeScale === M3Text.TypeScale.DisplayMedium ? 45
-        : typeScale === M3Text.TypeScale.DisplaySmall ? 36
-        : typeScale === M3Text.TypeScale.HeadlineLarge ? 32
-        : typeScale === M3Text.TypeScale.HeadlineMedium ? 28
-        : typeScale === M3Text.TypeScale.HeadlineSmall ? 24
-        : typeScale === M3Text.TypeScale.TitleLarge ? 22
-        : typeScale === M3Text.TypeScale.TitleMedium ? 16
-        : typeScale === M3Text.TypeScale.TitleSmall ? 14
-        : typeScale === M3Text.TypeScale.BodyLarge ? 16
-        : typeScale === M3Text.TypeScale.BodyMedium ? 14
-        : typeScale === M3Text.TypeScale.BodySmall ? 12
-        : typeScale === M3Text.TypeScale.LabelLarge ? 14
-        : typeScale === M3Text.TypeScale.LabelMedium ? 12
-        : typeScale === M3Text.TypeScale.LabelSmall ? 11
-        : null
+    font.pixelSize: fontSize
     font.preferTypoLineMetrics: true
 
     font.variableAxes: {
@@ -124,5 +127,12 @@ Text {
 
     Behavior on color {
         ExpressiveFastColor {}
+    }
+
+    FontMetrics {
+        id: fontMetrics
+
+        font.family: "Google Sans"
+        font.pixelSize: root.fontSize
     }
 }

@@ -177,7 +177,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             color: root.checkable && root.enabled && root.internalChecked ? row.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? row.unselectedIconLabelColor : root.enabled ? row.iconLabelColor : Qt.alpha(Color.scheme._onSurface, 0.38)
             fill: root.internalChecked ? 1 : mouseArea.containsMouse ? 1 : 0
-            font.pixelSize: root.size === M3Button.Size.Xsmall ? 20
+            fontSize: root.size === M3Button.Size.Xsmall ? 20
                 : root.size === M3Button.Size.Small || root.size === M3Button.Size.Medium ? 24
                 : root.size === M3Button.Size.Large ? 32
                 : root.size === M3Button.Size.Xlarge ? 40
@@ -197,7 +197,7 @@ Rectangle {
                 : root.size === M3Button.Size.Medium ? 0.15
                 : root.size === M3Button.Size.Large || root.size === M3Button.Size.Xlarge ? 0
                 : null
-            font.pixelSize: root.size === M3Button.Size.Xsmall || root.size === M3Button.Size.Small ? 14
+            fontSize: root.size === M3Button.Size.Xsmall || root.size === M3Button.Size.Small ? 14
                 : root.size === M3Button.Size.Medium ? 16
                 : root.size === M3Button.Size.Large ? 24
                 : root.size === M3Button.Size.Xlarge ? 32
