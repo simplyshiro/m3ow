@@ -21,7 +21,7 @@ Rectangle {
 
     color: "transparent"
     implicitHeight: 40
-    implicitWidth: pillSizeFocused + (pillSize - 1) * repeater.model + pillSpacing * repeater.model + padding * 2
+    implicitWidth: pillSizeFocused + pillSize * (repeater.model - 1) + pillSpacing * repeater.model + padding * 2
     radius: height
 
     Row {
