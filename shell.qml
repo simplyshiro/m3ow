@@ -9,6 +9,7 @@ import qs.widgets.bar
 import qs.widgets.power
 
 ShellRoot {
+    Wallpaper {}
     Bar {}
 
     PowerDialog {
@@ -40,6 +41,4 @@ ShellRoot {
             widthType: IconButton.Width.Narrow
         }
     }
-
-    Wallpaper {}
 }
