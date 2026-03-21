@@ -10,23 +10,19 @@ import qs.styles.motion
 Rectangle {
     id: root
 
-    readonly property color pillColor: Color.scheme._onSurfaceVariant
-    readonly property color pillColorOccupied: Color.scheme._onSurface
-    readonly property color pillColorFocused: Color.scheme.primary
-
     readonly property real padding: 16
     readonly property real pillSize: 8
     readonly property real pillSizeFocused: pillSize * 3
-    readonly property real pillSpacing: 8
+    readonly property real spacing: 8
 
     color: "transparent"
     implicitHeight: 40
-    implicitWidth: pillSizeFocused + pillSize * (repeater.model - 1) + pillSpacing * repeater.model + padding * 2
+    implicitWidth: pillSizeFocused + pillSize * (repeater.model - 1) + spacing * repeater.model + padding * 2
     radius: height
 
     Row {
         anchors.centerIn: parent
-        spacing: root.pillSpacing
+        spacing: root.spacing
 
         Connections {
             target: Hyprland
@@ -47,23 +43,19 @@ Rectangle {
         Repeater {
             id: repeater
 
-            model: 10
-
             delegate: Rectangle {
-                id: pill
-
                 required property int index
-                readonly property int id: index + 1
-                readonly property bool focused: Hyprland.focusedWorkspace?.id === id
+
+                readonly property bool focused: Hyprland.focusedWorkspace?.id === index + 1
 
                 readonly property var occupied: Hyprland.workspaces.values.reduce((accumulator, workspace) => {
                     accumulator[workspace.id] = workspace.lastIpcObject.windows > 0;
                     return accumulator;
                 }, {})
 
-                color: focused ? root.pillColorFocused : occupied[id] ? root.pillColorOccupied : root.pillColor
+                color: focused ? Color.scheme.primary : occupied[index + 1] ? Color.scheme._onSurface : Color.scheme._onSurfaceVariant
                 implicitHeight: root.pillSize
-                implicitWidth: focused ? root.pillSizeFocused : root.pillSize
+                implicitWidth: focused ? root.pillSizeFocused : implicitHeight
                 radius: height
 
                 Behavior on color {
@@ -74,6 +66,8 @@ Rectangle {
                     ExpressiveFastSpatial {}
                 }
             }
+
+            model: 10
         }
     }
 
