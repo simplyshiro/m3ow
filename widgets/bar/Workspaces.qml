@@ -42,7 +42,7 @@ Rectangle {
 
                 readonly property var occupied: {
                     Hyprland.workspaces.values.reduce((acc, curr) => {
-                        acc[curr.id] = curr.lastIpcObject.windows >= 0;
+                        acc[curr.id] = curr.lastIpcObject.windows > 0;
                         return acc;
                     }, {})
                 }
