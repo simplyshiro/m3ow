@@ -40,12 +40,10 @@ Rectangle {
                 readonly property int id: index + 1
                 readonly property bool focused: Hyprland.focusedWorkspace?.id === id
 
-                readonly property var occupied: {
-                    Hyprland.workspaces.values.reduce((acc, curr) => {
-                        acc[curr.id] = curr.lastIpcObject.windows > 0;
-                        return acc;
-                    }, {})
-                }
+                readonly property var occupied: Hyprland.workspaces.values.reduce((accumulator, workspace) => {
+                    accumulator[workspace.id] = workspace.lastIpcObject.windows > 0;
+                    return accumulator;
+                }, {})
 
                 color: focused ? root.pillColorFocused : occupied[id] ? root.pillColorOccupied : root.pillColor
                 implicitHeight: root.pillSize
