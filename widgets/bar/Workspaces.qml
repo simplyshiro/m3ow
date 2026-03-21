@@ -28,6 +28,22 @@ Rectangle {
         anchors.centerIn: parent
         spacing: root.pillSpacing
 
+        Connections {
+            target: Hyprland
+
+            function onFocusedWorkspaceChanged() {
+                Hyprland.refreshWorkspaces();
+            }
+        }
+
+        Connections {
+            target: Hyprland.workspaces
+
+            function onValuesChanged() {
+                Hyprland.refreshWorkspaces();
+            }
+        }
+
         Repeater {
             id: repeater
 
