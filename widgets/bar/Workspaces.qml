@@ -17,6 +17,11 @@ Item {
     readonly property real pillSizeFocused: pillSize * 3
     readonly property real spacing: 8
 
+    readonly property var occupiedWorkspaces: Hyprland.workspaces.values.reduce((accumulator, workspace) => {
+        accumulator[workspace.id] = workspace.lastIpcObject.windows > 0;
+        return accumulator;
+    }, {})
+
     implicitHeight: loader.height
     implicitWidth: loader.width
 
@@ -66,12 +71,7 @@ Item {
 
                         readonly property bool focused: Hyprland.focusedWorkspace?.id === index + 1
 
-                        readonly property var occupied: Hyprland.workspaces.values.reduce((accumulator, workspace) => {
-                            accumulator[workspace.id] = workspace.lastIpcObject.windows > 0;
-                            return accumulator;
-                        }, {})
-
-                        color: focused ? Color.scheme.primary : occupied[index + 1] ? Color.scheme._onSurface : Color.scheme._onSurfaceVariant
+                        color: focused ? Color.scheme.primary : root.occupiedWorkspaces[index + 1] ? Color.scheme._onSurface : Color.scheme._onSurfaceVariant
                         implicitHeight: root.pillSize
                         implicitWidth: focused ? root.pillSizeFocused : implicitHeight
                         radius: height
