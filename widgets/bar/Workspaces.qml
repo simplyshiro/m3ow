@@ -7,7 +7,7 @@ import qs.components
 import qs.styles
 import qs.styles.motion
 
-Rectangle {
+Item {
     id: root
 
     readonly property real padding: 16
@@ -15,89 +15,107 @@ Rectangle {
     readonly property real pillSizeFocused: pillSize * 3
     readonly property real spacing: 8
 
-    color: "transparent"
-    implicitHeight: 40
-    implicitWidth: pillSizeFocused + pillSize * (repeater.model - 1) + spacing * repeater.model + padding * 2
-    radius: height
+    implicitHeight: loader.height
+    implicitWidth: loader.width
 
-    Row {
-        anchors.centerIn: parent
-        spacing: root.spacing
+    Loader {
+        id: loader
 
-        Connections {
-            target: Hyprland
-
-            function onFocusedWorkspaceChanged() {
-                Hyprland.refreshWorkspaces();
-            }
-        }
-
-        Connections {
-            target: Hyprland.workspaces
-
-            function onValuesChanged() {
-                Hyprland.refreshWorkspaces();
-            }
-        }
-
-        Repeater {
-            id: repeater
-
-            delegate: Rectangle {
-                required property int index
-
-                readonly property bool focused: Hyprland.focusedWorkspace?.id === index + 1
-
-                readonly property var occupied: Hyprland.workspaces.values.reduce((accumulator, workspace) => {
-                    accumulator[workspace.id] = workspace.lastIpcObject.windows > 0;
-                    return accumulator;
-                }, {})
-
-                color: focused ? Color.scheme.primary : occupied[index + 1] ? Color.scheme._onSurface : Color.scheme._onSurfaceVariant
-                implicitHeight: root.pillSize
-                implicitWidth: focused ? root.pillSizeFocused : implicitHeight
-                radius: height
-
-                Behavior on color {
-                    ExpressiveFastColor {}
-                }
-
-                Behavior on implicitWidth {
-                    ExpressiveFastSpatial {}
-                }
-            }
-
-            model: 10
-        }
+        active: Hyprland.eventSocketPath
+        sourceComponent: workspaces
     }
 
-    MouseArea {
-        anchors.fill: parent
-        cursorShape: undefined
-        hoverEnabled: true
+    Component {
+        id: workspaces
 
-        onWheel: (wheel) => {
-            if (wheel.angleDelta.y > 0) {
-                if (Hyprland.focusedWorkspace.id === 1) {
-                    Hyprland.dispatch(`workspace ${repeater.model}`);
-                } else {
-                    Hyprland.dispatch("workspace -1");
+        Rectangle {
+            id: container
+
+            color: "transparent"
+            implicitHeight: 40
+            implicitWidth: root.pillSizeFocused + root.pillSize * (repeater.model - 1) + root.spacing * repeater.model + root.padding * 2
+            radius: height
+
+            Row {
+                anchors.centerIn: parent
+                spacing: root.spacing
+
+                Connections {
+                    target: Hyprland
+
+                    function onFocusedWorkspaceChanged() {
+                        Hyprland.refreshWorkspaces();
+                    }
+                }
+
+                Connections {
+                    target: Hyprland.workspaces
+
+                    function onValuesChanged() {
+                        Hyprland.refreshWorkspaces();
+                    }
+                }
+
+                Repeater {
+                    id: repeater
+
+                    delegate: Rectangle {
+                        required property int index
+
+                        readonly property bool focused: Hyprland.focusedWorkspace?.id === index + 1
+
+                        readonly property var occupied: Hyprland.workspaces.values.reduce((accumulator, workspace) => {
+                            accumulator[workspace.id] = workspace.lastIpcObject.windows > 0;
+                            return accumulator;
+                        }, {})
+
+                        color: focused ? Color.scheme.primary : occupied[index + 1] ? Color.scheme._onSurface : Color.scheme._onSurfaceVariant
+                        implicitHeight: root.pillSize
+                        implicitWidth: focused ? root.pillSizeFocused : implicitHeight
+                        radius: height
+
+                        Behavior on color {
+                            ExpressiveFastColor {}
+                        }
+
+                        Behavior on implicitWidth {
+                            ExpressiveFastSpatial {}
+                        }
+                    }
+
+                    model: 10
                 }
             }
 
-            if (wheel.angleDelta.y < 0) {
-                if (Hyprland.focusedWorkspace.id === repeater.model) {
-                    Hyprland.dispatch("workspace 1");
-                } else {
-                    Hyprland.dispatch("workspace +1");
+            MouseArea {
+                anchors.fill: parent
+                cursorShape: undefined
+                hoverEnabled: true
+
+                onWheel: (wheel) => {
+                    if (wheel.angleDelta.y > 0) {
+                        if (Hyprland.focusedWorkspace.id === 1) {
+                            Hyprland.dispatch(`workspace ${repeater.model}`);
+                        } else {
+                            Hyprland.dispatch("workspace -1");
+                        }
+                    }
+
+                    if (wheel.angleDelta.y < 0) {
+                        if (Hyprland.focusedWorkspace.id === repeater.model) {
+                            Hyprland.dispatch("workspace 1");
+                        } else {
+                            Hyprland.dispatch("workspace +1");
+                        }
+                    }
+                }
+
+                StateLayer {
+                    anchors.fill : parent
+                    color: Color.scheme._onSurface
+                    radius: container.radius
                 }
             }
-        }
-
-        StateLayer {
-            anchors.fill : parent
-            color: Color.scheme._onSurface
-            radius: root.radius
         }
     }
 }
