@@ -10,6 +10,8 @@ import qs.styles.motion
 Item {
     id: root
 
+    readonly property int workspaceCount: 10
+
     readonly property real padding: 16
     readonly property real pillSize: 8
     readonly property real pillSizeFocused: pillSize * 3
@@ -33,7 +35,7 @@ Item {
 
             color: "transparent"
             implicitHeight: 40
-            implicitWidth: root.pillSizeFocused + root.pillSize * (repeater.model - 1) + root.spacing * repeater.model + root.padding * 2
+            implicitWidth: root.pillSizeFocused + root.pillSize * (root.workspaceCount - 1) + root.spacing * root.workspaceCount + root.padding * 2
             radius: height
 
             Row {
@@ -83,7 +85,7 @@ Item {
                         }
                     }
 
-                    model: 10
+                    model: root.workspaceCount
                 }
             }
 
@@ -95,14 +97,14 @@ Item {
                 onWheel: (wheel) => {
                     if (wheel.angleDelta.y > 0) {
                         if (Hyprland.focusedWorkspace.id === 1) {
-                            Hyprland.dispatch(`workspace ${repeater.model}`);
+                            Hyprland.dispatch(`workspace ${root.workspaceCount}`);
                         } else {
                             Hyprland.dispatch("workspace -1");
                         }
                     }
 
                     if (wheel.angleDelta.y < 0) {
-                        if (Hyprland.focusedWorkspace.id === repeater.model) {
+                        if (Hyprland.focusedWorkspace.id === root.workspaceCount) {
                             Hyprland.dispatch("workspace 1");
                         } else {
                             Hyprland.dispatch("workspace +1");
