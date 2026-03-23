@@ -6,27 +6,20 @@ import Quickshell.Hyprland
 import Quickshell.Wayland
 
 import qs.components
+import qs.services
 import qs.styles
 import qs.widgets.power
 
-Variants {
-    id: root
-
-    default property list<PowerButton> powerButtons
-
-    model: Quickshell.screens
-
-    Scope {
-        id: scope
-
-        required property ShellScreen modelData
-
-        Loader {
+Scope {
+    Variants {
+        delegate: LazyLoader {
             id: loader
 
-            active: false
+            required property ShellScreen modelData
 
-            PanelWindow {
+            active: GlobalStates.powerDialogActive
+
+            component: PanelWindow {
                 WlrLayershell.exclusionMode: ExclusionMode.Ignore
                 WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
                 WlrLayershell.layer: WlrLayer.Overlay
@@ -35,13 +28,13 @@ Variants {
                 anchors.right: true
                 anchors.top: true
                 color: Qt.alpha(Color.scheme.scrim, 0.32)
-                screen: scope.modelData
+                screen: loader.modelData
                 visible: loader.active
 
                 contentItem {
                     Keys.onPressed: event => {
                         if (event.key === Qt.Key_Escape) {
-                            loader.active = false;
+                            GlobalStates.powerDialogActive = false;
                         } else {
                             for (let i = 0; i < root.powerButtons.length; i++) {
                                 let powerButton = root.powerButtons[i];
@@ -59,7 +52,7 @@ Variants {
                 MouseArea {
                     anchors.fill: parent
                     cursorShape: undefined
-                    onClicked: loader.active = false
+                    onClicked: GlobalStates.powerDialogActive = false
                 }
 
                 Rectangle {
@@ -111,9 +104,11 @@ Variants {
             }
         }
 
-        GlobalShortcut {
-            name: "powerPanel"
-            onPressed: loader.active = !loader.active
-        }
+        model: Quickshell.screens
+    }
+
+    GlobalShortcut {
+        name: "powerPanel"
+        onPressed: GlobalStates.powerDialogActive = !GlobalStates.powerDialogActive
     }
 }
