@@ -108,7 +108,7 @@ Scope {
     }
 
     GlobalShortcut {
-        name: "powerPanel"
+        name: "togglePowerDialog"
         onPressed: GlobalStates.powerDialogActive = !GlobalStates.powerDialogActive
     }
 }
