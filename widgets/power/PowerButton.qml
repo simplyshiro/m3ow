@@ -8,8 +8,6 @@ IconButton {
 
     required property string command
 
-    property int keybind
-
     colorType: IconButton.Color.Tonal
     size: IconButton.Size.Large
     widthType: IconButton.Width.Default

@@ -35,14 +35,6 @@ Scope {
                     Keys.onPressed: event => {
                         if (event.key === Qt.Key_Escape) {
                             GlobalStates.powerDialogActive = false;
-                        } else {
-                            for (let i = 0; i < root.powerButtons.length; i++) {
-                                let powerButton = root.powerButtons[i];
-
-                                if (event.key === powerButton.keybind) {
-                                    powerButton.execute();
-                                }
-                            }
                         }
                     }
 
@@ -76,27 +68,23 @@ Scope {
                             colorType: IconButton.Color.Filled
                             command: "systemctl poweroff"
                             icon: "power_settings_new"
-                            keybind: Qt.Key_P
                             widthType: IconButton.Width.Wide
                         }
 
                         PowerButton {
                             command: "systemctl reboot"
                             icon: "restart_alt"
-                            keybind: Qt.Key_R
                             widthType: IconButton.Width.Narrow
                         }
 
                         PowerButton {
                             command: "systemctl reboot --boot-loader-entry=auto-windows"
                             icon: "window"
-                            keybind: Qt.Key_W
                         }
 
                         PowerButton {
                             command: "loginctl terminate-user ''"
                             icon: "logout"
-                            keybind: Qt.Key_L
                             widthType: IconButton.Width.Narrow
                         }
                     }
