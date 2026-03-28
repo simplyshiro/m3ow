@@ -86,7 +86,7 @@ Variants {
                     }
 
                     Behavior on color {
-                        ExpressiveFastColor {}
+                        ExpressiveDefaultColor {}
                     }
                 }
             }
