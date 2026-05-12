@@ -97,17 +97,17 @@ Item {
                 onWheel: (wheel) => {
                     if (wheel.angleDelta.y > 0) {
                         if (Hyprland.focusedWorkspace.id === 1) {
-                            Hyprland.dispatch(`workspace ${root.workspaceCount}`);
+                            Hyprland.dispatch(`hl.dsp.focus({ workspace = '${root.workspaceCount}' })`);
                         } else {
-                            Hyprland.dispatch("workspace -1");
+                            Hyprland.dispatch("hl.dsp.focus({ workspace = '-1' })");
                         }
                     }
 
                     if (wheel.angleDelta.y < 0) {
                         if (Hyprland.focusedWorkspace.id === root.workspaceCount) {
-                            Hyprland.dispatch("workspace 1");
+                            Hyprland.dispatch("hl.dsp.focus({ workspace = '1' })");
                         } else {
-                            Hyprland.dispatch("workspace +1");
+                            Hyprland.dispatch("hl.dsp.focus({ workspace = '+1' })");
                         }
                     }
                 }
