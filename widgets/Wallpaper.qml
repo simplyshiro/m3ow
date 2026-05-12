@@ -26,7 +26,6 @@ Variants {
             Image {
                 anchors.fill: parent
                 asynchronous: true
-                cache: false
                 fillMode: Image.PreserveAspectCrop
                 source: `${Quickshell.shellDir}/wallpaper`
                 sourceSize.height: parent.height
