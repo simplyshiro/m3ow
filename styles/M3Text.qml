@@ -78,7 +78,7 @@ Text {
     property real opsz: fontMetrics.font.pointSize
 
     color: Color.scheme._onSurface
-    font.family: "Google Sans"
+    font.family: "sans-serif"
     font.hintingPreference: Font.PreferNoHinting
     font.letterSpacing: typeScale === M3Text.TypeScale.DisplayLarge ? 0
         : typeScale === M3Text.TypeScale.DisplayMedium ? 0
@@ -132,7 +132,7 @@ Text {
     FontMetrics {
         id: fontMetrics
 
-        font.family: "Google Sans"
+        font.family: "sans-serif"
         font.pixelSize: root.fontSize
     }
 }
