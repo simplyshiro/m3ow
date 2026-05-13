@@ -20,6 +20,7 @@ Item {
             WlrLayershell.exclusionMode: ExclusionMode.Ignore
             WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
             WlrLayershell.layer: WlrLayer.Overlay
+            WlrLayershell.namespace: "quickshell:powerDialog"
             anchors.bottom: true
             anchors.left: true
             anchors.right: true
