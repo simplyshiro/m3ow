@@ -28,6 +28,7 @@ Variants {
 
         PanelWindow {
             WlrLayershell.exclusionMode: ExclusionMode.Ignore
+            WlrLayershell.namespace: "quickshell:bar"
             anchors.bottom: true
             anchors.left: true
             anchors.right: true
