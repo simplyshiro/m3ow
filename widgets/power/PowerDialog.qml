@@ -8,12 +8,29 @@ import Quickshell.Wayland
 import qs.components
 import qs.services
 import qs.styles
+import qs.widgets
 import qs.widgets.power
 
 Item {
-    LazyLoader {
-        id: loader
+    Variants {
+        model: Quickshell.screens
 
+        Scope {
+            id: scope
+
+            required property ShellScreen modelData
+
+            LazyLoader {
+                activeAsync: GlobalStates.powerDialogActive
+
+                Scrim {
+                    screen: scope.modelData
+                }
+            }
+        }
+    }
+
+    LazyLoader {
         activeAsync: GlobalStates.powerDialogActive
 
         PanelWindow {
@@ -25,8 +42,7 @@ Item {
             anchors.left: true
             anchors.right: true
             anchors.top: true
-            color: Qt.alpha(Color.scheme.scrim, 0.32)
-            visible: loader.active
+            color: "transparent"
 
             contentItem {
                 Keys.onPressed: event => {
