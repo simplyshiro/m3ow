@@ -10,89 +10,80 @@ import qs.services
 import qs.styles
 import qs.widgets.power
 
-Scope {
-    Variants {
-        delegate: LazyLoader {
-            id: loader
+Item {
+    LazyLoader {
+        id: loader
 
-            required property ShellScreen modelData
+        activeAsync: GlobalStates.powerDialogActive
 
-            active: GlobalStates.powerDialogActive
+        PanelWindow {
+            WlrLayershell.exclusionMode: ExclusionMode.Ignore
+            WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+            WlrLayershell.layer: WlrLayer.Overlay
+            anchors.bottom: true
+            anchors.left: true
+            anchors.right: true
+            anchors.top: true
+            color: Qt.alpha(Color.scheme.scrim, 0.32)
+            visible: loader.active
 
-            component: PanelWindow {
-                WlrLayershell.exclusionMode: ExclusionMode.Ignore
-                WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
-                WlrLayershell.layer: WlrLayer.Overlay
-                anchors.bottom: true
-                anchors.left: true
-                anchors.right: true
-                anchors.top: true
-                color: Qt.alpha(Color.scheme.scrim, 0.32)
-                screen: loader.modelData
-                visible: loader.active
-
-                contentItem {
-                    Keys.onPressed: event => {
-                        if (event.key === Qt.Key_Escape) {
-                            GlobalStates.powerDialogActive = false;
-                        }
+            contentItem {
+                Keys.onPressed: event => {
+                    if (event.key === Qt.Key_Escape) {
+                        GlobalStates.powerDialogActive = false;
                     }
-
-                    focus: true
                 }
 
-                MouseArea {
-                    anchors.fill: parent
-                    cursorShape: undefined
-                    onClicked: GlobalStates.powerDialogActive = false
-                }
+                focus: true
+            }
 
-                Rectangle {
-                    id: rectangle
+            MouseArea {
+                anchors.fill: parent
+                cursorShape: undefined
+                onClicked: GlobalStates.powerDialogActive = false
+            }
 
-                    readonly property real leadingTrailingSpace: 48
+            Rectangle {
+                readonly property real leadingTrailingSpace: 48
+
+                anchors.centerIn: parent
+                color: Color.scheme.surfaceContainer
+                implicitHeight: row.height + leadingTrailingSpace * 2
+                implicitWidth: row.width + leadingTrailingSpace * 2
+                radius: Shape.corner.extraLarge
+
+                Row {
+                    id: row
 
                     anchors.centerIn: parent
-                    color: Color.scheme.surfaceContainer
-                    implicitHeight: row.height + leadingTrailingSpace * 2
-                    implicitWidth: row.width + leadingTrailingSpace * 2
-                    radius: Shape.corner.extraLarge
+                    spacing: 12
 
-                    Row {
-                        id: row
+                    PowerButton {
+                        colorType: IconButton.Color.Filled
+                        command: "systemctl poweroff"
+                        icon: "power_settings_new"
+                        widthType: IconButton.Width.Wide
+                    }
 
-                        anchors.centerIn: parent
-                        spacing: 12
+                    PowerButton {
+                        command: "systemctl reboot"
+                        icon: "restart_alt"
+                        widthType: IconButton.Width.Narrow
+                    }
 
-                        PowerButton {
-                            colorType: IconButton.Color.Filled
-                            command: "systemctl poweroff"
-                            icon: "power_settings_new"
-                            widthType: IconButton.Width.Wide
-                        }
+                    PowerButton {
+                        command: "systemctl reboot --boot-loader-entry=auto-windows"
+                        icon: "window"
+                    }
 
-                        PowerButton {
-                            command: "systemctl reboot"
-                            icon: "restart_alt"
-                            widthType: IconButton.Width.Narrow
-                        }
-
-                        PowerButton {
-                            command: "systemctl reboot --boot-loader-entry=auto-windows"
-                            icon: "window"
-                        }
-
-                        PowerButton {
-                            command: "loginctl terminate-user ''"
-                            icon: "logout"
-                            widthType: IconButton.Width.Narrow
-                        }
+                    PowerButton {
+                        command: "loginctl terminate-user ''"
+                        icon: "logout"
+                        widthType: IconButton.Width.Narrow
                     }
                 }
             }
         }
-
-        model: Quickshell.screens
     }
 
     GlobalShortcut {
