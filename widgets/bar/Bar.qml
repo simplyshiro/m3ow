@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.Layouts
 import Quickshell
 import Quickshell.Wayland
 
@@ -65,25 +64,32 @@ Variants {
                     color: Color.scheme.surfaceContainer
                     implicitHeight: 64
 
-                    RowLayout {
+                    Row {
                         anchors.bottom: parent.bottom
                         anchors.left: parent.left
                         anchors.leftMargin: 24
                         anchors.top: parent.top
                         spacing: 8
 
-                        Workspaces {}
+                        Workspaces {
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
                     }
 
-                    RowLayout {
+                    Row {
                         anchors.bottom: parent.bottom
                         anchors.right: parent.right
                         anchors.rightMargin: 24
                         anchors.top: parent.top
                         spacing: 8
 
-                        ThemeButton {}
-                        ClockDate {}
+                        ThemeButton {
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
+
+                        ClockDate {
+                            anchors.verticalCenter: parent.verticalCenter
+                        }
                     }
 
                     Behavior on color {
