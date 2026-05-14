@@ -80,7 +80,6 @@ Rectangle {
 
     property bool checkable
     property bool checked
-    property bool enabled: true
     property bool internalChecked
 
     property int colorType: IconButton.Color.Filled
