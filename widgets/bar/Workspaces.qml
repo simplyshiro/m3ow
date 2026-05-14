@@ -29,13 +29,8 @@ Item {
         id: loader
 
         active: Hyprland.eventSocketPath
-        sourceComponent: workspaces
-    }
 
-    Component {
-        id: workspaces
-
-        Rectangle {
+        sourceComponent: Rectangle {
             id: container
 
             color: "transparent"
