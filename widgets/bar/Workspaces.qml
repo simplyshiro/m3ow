@@ -66,7 +66,9 @@ Item {
                 Repeater {
                     id: repeater
 
-                    delegate: Rectangle {
+                    model: root.workspaceCount
+
+                    Rectangle {
                         required property int index
 
                         readonly property bool focused: Hyprland.focusedWorkspace?.id === index + 1
@@ -84,8 +86,6 @@ Item {
                             ExpressiveFastSpatial {}
                         }
                     }
-
-                    model: root.workspaceCount
                 }
             }
 
