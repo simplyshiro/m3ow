@@ -25,77 +25,106 @@ Text {
 
     property bool emphasized: false
 
+    property int fontSize: getFontSize(typeScale)
     property int grad: 0
-    property int weight: emphasized && typeScale === M3Text.TypeScale.DisplayLarge ? 500
-        : emphasized && typeScale === M3Text.TypeScale.DisplayMedium ? 500
-        : emphasized && typeScale === M3Text.TypeScale.DisplaySmall ? 500
-        : emphasized && typeScale === M3Text.TypeScale.HeadlineLarge ? 500
-        : emphasized && typeScale === M3Text.TypeScale.HeadlineMedium ? 500
-        : emphasized && typeScale === M3Text.TypeScale.HeadlineSmall ? 500
-        : emphasized && typeScale === M3Text.TypeScale.TitleLarge ? 500
-        : emphasized && typeScale === M3Text.TypeScale.TitleMedium ? 600
-        : emphasized && typeScale === M3Text.TypeScale.TitleSmall ? 600
-        : emphasized && typeScale === M3Text.TypeScale.BodyLarge ? 500
-        : emphasized && typeScale === M3Text.TypeScale.BodyMedium ? 500
-        : emphasized && typeScale === M3Text.TypeScale.BodySmall ? 500
-        : emphasized && typeScale === M3Text.TypeScale.LabelLarge ? 600
-        : emphasized && typeScale === M3Text.TypeScale.LabelMedium ? 600
-        : emphasized && typeScale === M3Text.TypeScale.LabelSmall ? 600
-        : typeScale === M3Text.TypeScale.DisplayLarge ? 400
-        : typeScale === M3Text.TypeScale.DisplayMedium ? 400
-        : typeScale === M3Text.TypeScale.DisplaySmall ? 400
-        : typeScale === M3Text.TypeScale.HeadlineLarge ? 400
-        : typeScale === M3Text.TypeScale.HeadlineMedium ? 400
-        : typeScale === M3Text.TypeScale.HeadlineSmall ? 400
-        : typeScale === M3Text.TypeScale.TitleLarge ? 400
-        : typeScale === M3Text.TypeScale.TitleMedium ? 500
-        : typeScale === M3Text.TypeScale.TitleSmall ? 500
-        : typeScale === M3Text.TypeScale.BodyLarge ? 400
-        : typeScale === M3Text.TypeScale.BodyMedium ? 400
-        : typeScale === M3Text.TypeScale.BodySmall ? 400
-        : typeScale === M3Text.TypeScale.LabelLarge ? 500
-        : typeScale === M3Text.TypeScale.LabelMedium ? 500
-        : typeScale === M3Text.TypeScale.LabelSmall ? 500
-        : null
     property int typeScale: M3Text.TypeScale.BodyMedium
+    property int weight: getWeight(typeScale, emphasized)
 
-    property int fontSize: typeScale === M3Text.TypeScale.DisplayLarge ? 57
-        : typeScale === M3Text.TypeScale.DisplayMedium ? 45
-        : typeScale === M3Text.TypeScale.DisplaySmall ? 36
-        : typeScale === M3Text.TypeScale.HeadlineLarge ? 32
-        : typeScale === M3Text.TypeScale.HeadlineMedium ? 28
-        : typeScale === M3Text.TypeScale.HeadlineSmall ? 24
-        : typeScale === M3Text.TypeScale.TitleLarge ? 22
-        : typeScale === M3Text.TypeScale.TitleMedium ? 16
-        : typeScale === M3Text.TypeScale.TitleSmall ? 14
-        : typeScale === M3Text.TypeScale.BodyLarge ? 16
-        : typeScale === M3Text.TypeScale.BodyMedium ? 14
-        : typeScale === M3Text.TypeScale.BodySmall ? 12
-        : typeScale === M3Text.TypeScale.LabelLarge ? 14
-        : typeScale === M3Text.TypeScale.LabelMedium ? 12
-        : typeScale === M3Text.TypeScale.LabelSmall ? 11
-        : null
     property real opsz: fontMetrics.font.pointSize
+
+    function getFontSize(typeScale: int): int {
+        switch (typeScale) {
+        case M3Text.TypeScale.DisplayLarge:
+            return 57;
+        case M3Text.TypeScale.DisplayMedium:
+            return 45;
+        case M3Text.TypeScale.DisplaySmall:
+            return 36;
+        case M3Text.TypeScale.HeadlineLarge:
+            return 32;
+        case M3Text.TypeScale.HeadlineMedium:
+            return 28;
+        case M3Text.TypeScale.HeadlineSmall:
+            return 24;
+        case M3Text.TypeScale.TitleLarge:
+            return 22;
+        case M3Text.TypeScale.TitleSmall:
+        case M3Text.TypeScale.BodyMedium:
+        case M3Text.TypeScale.LabelLarge:
+            return 14;
+        case M3Text.TypeScale.BodySmall:
+        case M3Text.TypeScale.LabelMedium:
+            return 12;
+        case M3Text.TypeScale.LabelSmall:
+            return 11;
+        default:
+            return 16;
+        }
+    }
+
+    function getLetterSpacing(typeScale: int): real {
+        switch (typeScale) {
+        case M3Text.TypeScale.BodySmall:
+        case M3Text.TypeScale.LabelMedium:
+        case M3Text.TypeScale.LabelSmall:
+            return 0.1;
+        default:
+            return 0;
+        }
+    }
+
+    function getLineHeight(typeScale: int): real {
+        switch (typeScale) {
+        case M3Text.TypeScale.DisplayLarge:
+            return 64;
+        case M3Text.TypeScale.DisplayMedium:
+            return 52;
+        case M3Text.TypeScale.DisplaySmall:
+            return 44;
+        case M3Text.TypeScale.HeadlineLarge:
+            return 40;
+        case M3Text.TypeScale.HeadlineMedium:
+            return 36;
+        case M3Text.TypeScale.HeadlineSmall:
+            return 32;
+        case M3Text.TypeScale.TitleLarge:
+            return 28;
+        case M3Text.TypeScale.TitleSmall:
+        case M3Text.TypeScale.BodyMedium:
+        case M3Text.TypeScale.LabelLarge:
+            return 20;
+        case M3Text.TypeScale.BodySmall:
+        case M3Text.TypeScale.LabelMedium:
+        case M3Text.TypeScale.LabelSmall:
+            return 16;
+        default:
+            return 24;
+        }
+    }
+
+    function getWeight(typeScale: int, emphasized: bool): int {
+        let baseWeight = 400;
+
+        switch (typeScale) {
+        case M3Text.TypeScale.TitleMedium:
+        case M3Text.TypeScale.TitleSmall:
+        case M3Text.TypeScale.LabelLarge:
+        case M3Text.TypeScale.LabelMedium:
+        case M3Text.TypeScale.LabelSmall:
+            baseWeight = 500;
+            break;
+        default:
+            baseWeight = 400;
+            break;
+        }
+
+        return emphasized ? baseWeight + 100 : baseWeight;
+    }
 
     color: Color.scheme._onSurface
     font.family: "sans-serif"
     font.hintingPreference: Font.PreferNoHinting
-    font.letterSpacing: typeScale === M3Text.TypeScale.DisplayLarge ? 0
-        : typeScale === M3Text.TypeScale.DisplayMedium ? 0
-        : typeScale === M3Text.TypeScale.DisplaySmall ? 0
-        : typeScale === M3Text.TypeScale.HeadlineLarge ? 0
-        : typeScale === M3Text.TypeScale.HeadlineMedium ? 0
-        : typeScale === M3Text.TypeScale.HeadlineSmall ? 0
-        : typeScale === M3Text.TypeScale.TitleLarge ? 0
-        : typeScale === M3Text.TypeScale.TitleMedium ? 0
-        : typeScale === M3Text.TypeScale.TitleSmall ? 0
-        : typeScale === M3Text.TypeScale.BodyLarge ? 0
-        : typeScale === M3Text.TypeScale.BodyMedium ? 0
-        : typeScale === M3Text.TypeScale.BodySmall ? 0.1
-        : typeScale === M3Text.TypeScale.LabelLarge ? 0
-        : typeScale === M3Text.TypeScale.LabelMedium ? 0.1
-        : typeScale === M3Text.TypeScale.LabelSmall ? 0.1
-        : null
+    font.letterSpacing: getLetterSpacing(typeScale)
     font.pixelSize: fontSize
     font.preferTypoLineMetrics: true
 
@@ -106,22 +135,7 @@ Text {
     }
 
     font.weight: weight
-    lineHeight: typeScale === M3Text.TypeScale.DisplayLarge ? 64
-        : typeScale === M3Text.TypeScale.DisplayMedium ? 52
-        : typeScale === M3Text.TypeScale.DisplaySmall ? 44
-        : typeScale === M3Text.TypeScale.HeadlineLarge ? 40
-        : typeScale === M3Text.TypeScale.HeadlineMedium ? 36
-        : typeScale === M3Text.TypeScale.HeadlineSmall ? 32
-        : typeScale === M3Text.TypeScale.TitleLarge ? 28
-        : typeScale === M3Text.TypeScale.TitleMedium ? 24
-        : typeScale === M3Text.TypeScale.TitleSmall ? 20
-        : typeScale === M3Text.TypeScale.BodyLarge ? 24
-        : typeScale === M3Text.TypeScale.BodyMedium ? 20
-        : typeScale === M3Text.TypeScale.BodySmall ? 16
-        : typeScale === M3Text.TypeScale.LabelLarge ? 20
-        : typeScale === M3Text.TypeScale.LabelMedium ? 16
-        : typeScale === M3Text.TypeScale.LabelSmall ? 16
-        : null
+    lineHeight: getLineHeight(typeScale)
     lineHeightMode: Text.FixedHeight
     renderType: Text.NativeRendering
 
