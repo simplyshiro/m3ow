@@ -137,7 +137,6 @@ Text {
     font.weight: weight
     lineHeight: getLineHeight(typeScale)
     lineHeightMode: Text.FixedHeight
-    renderType: Text.NativeRendering
 
     Behavior on color {
         ExpressiveFastColor {}
