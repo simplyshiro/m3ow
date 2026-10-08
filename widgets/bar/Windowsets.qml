@@ -77,10 +77,11 @@ Item {
 
                         readonly property bool active: windowset?.active ?? false
                         readonly property bool occupied: windowset !== undefined
+                        readonly property bool urgent: windowset?.urgent ?? false
 
                         readonly property var windowset: WindowManager.windowsets?.find(workspace => workspace.name === `${index + 1}`)
 
-                        color: active ? Colors.scheme.primary : occupied ? Colors.scheme._onSurface : Colors.scheme._onSurfaceVariant
+                        color: urgent ? Colors.scheme.error : active ? Colors.scheme.primary : occupied ? Colors.scheme._onSurface : Colors.scheme._onSurfaceVariant
                         implicitHeight: root.pillSize
                         implicitWidth: active ? root.pillSizeFocused : implicitHeight
                         radius: height
