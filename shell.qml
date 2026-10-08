@@ -1,4 +1,5 @@
 //@ pragma DefaultEnv QSG_RENDER_LOOP=threaded
+//@ pragma DropExpensiveFonts
 
 import QtQuick
 import Quickshell
