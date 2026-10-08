@@ -80,7 +80,7 @@ Item {
 
                         readonly property var windowset: WindowManager.windowsets?.find(workspace => workspace.name === `${index + 1}`)
 
-                        color: active ? Color.scheme.primary : occupied ? Color.scheme._onSurface : Color.scheme._onSurfaceVariant
+                        color: active ? Colors.scheme.primary : occupied ? Colors.scheme._onSurface : Colors.scheme._onSurfaceVariant
                         implicitHeight: root.pillSize
                         implicitWidth: active ? root.pillSizeFocused : implicitHeight
                         radius: height
@@ -109,7 +109,7 @@ Item {
 
                 StateLayer {
                     anchors.fill : parent
-                    color: Color.scheme._onSurface
+                    color: Colors.scheme._onSurface
                     radius: container.radius
                 }
             }

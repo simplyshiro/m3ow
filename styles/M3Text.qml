@@ -121,7 +121,7 @@ Text {
         return emphasized ? baseWeight + 100 : baseWeight;
     }
 
-    color: Color.scheme._onSurface
+    color: Colors.scheme._onSurface
     font.family: "sans-serif"
     font.hintingPreference: Font.PreferNoHinting
     font.letterSpacing: getLetterSpacing(typeScale)

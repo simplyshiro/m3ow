@@ -34,17 +34,17 @@ Rectangle {
 
     required property string icon
 
-    readonly property color containerColor: colorType === IconButton.Color.Filled ? Color.scheme.primary
-        : colorType === IconButton.Color.Tonal ? Color.scheme.secondaryContainer
+    readonly property color containerColor: colorType === IconButton.Color.Filled ? Colors.scheme.primary
+        : colorType === IconButton.Color.Tonal ? Colors.scheme.secondaryContainer
         : colorType === IconButton.Color.Outlined || colorType === IconButton.Color.Standard ? "transparent"
         : null
-    readonly property color selectedContainerColor: colorType === IconButton.Color.Filled ? Color.scheme.primary
-        : colorType === IconButton.Color.Tonal ? Color.scheme.secondary
-        : colorType === IconButton.Color.Outlined ? Color.scheme.inverseSurface
+    readonly property color selectedContainerColor: colorType === IconButton.Color.Filled ? Colors.scheme.primary
+        : colorType === IconButton.Color.Tonal ? Colors.scheme.secondary
+        : colorType === IconButton.Color.Outlined ? Colors.scheme.inverseSurface
         : colorType === IconButton.Color.Standard ? "transparent"
         : null
-    readonly property color unselectedContainerColor: colorType === IconButton.Color.Filled ? Color.scheme.surfaceContainer
-        : colorType === IconButton.Color.Tonal ? Color.scheme.secondaryContainer
+    readonly property color unselectedContainerColor: colorType === IconButton.Color.Filled ? Colors.scheme.surfaceContainer
+        : colorType === IconButton.Color.Tonal ? Colors.scheme.secondaryContainer
         : colorType === IconButton.Color.Outlined || colorType === IconButton.Color.Standard ? "transparent"
         : null
 
@@ -89,12 +89,12 @@ Rectangle {
 
     signal clicked
 
-    border.color: colorType === IconButton.Color.Outlined && !internalChecked ? Color.scheme.outlineVariant : "transparent"
+    border.color: colorType === IconButton.Color.Outlined && !internalChecked ? Colors.scheme.outlineVariant : "transparent"
     border.width: size === IconButton.Size.Xsmall || size === IconButton.Size.Small || size === IconButton.Size.Medium ? 1
         : size === IconButton.Size.Large ? 2
         : size === IconButton.Size.Large ? 3
         : null
-    color: enabled && internalChecked ? selectedContainerColor : checkable && enabled && !internalChecked ? unselectedContainerColor : enabled ? containerColor : (colorType === IconButton.Color.Outlined && !enabled && !internalChecked) || colorType === IconButton.Color.Standard ? "transparent" : Qt.alpha(Color.scheme._onSurface, 0.1)
+    color: enabled && internalChecked ? selectedContainerColor : checkable && enabled && !internalChecked ? unselectedContainerColor : enabled ? containerColor : (colorType === IconButton.Color.Outlined && !enabled && !internalChecked) || colorType === IconButton.Color.Standard ? "transparent" : Qt.alpha(Colors.scheme._onSurface, 0.1)
     implicitHeight: size === IconButton.Size.Xsmall ? 32
         : size === IconButton.Size.Small ? 40
         : size === IconButton.Size.Medium ? 56
@@ -142,22 +142,22 @@ Rectangle {
     M3Icon {
         id: icon
 
-        readonly property color iconColor: root.colorType === IconButton.Color.Filled ? Color.scheme._onPrimary
-            : root.colorType === IconButton.Color.Tonal ? Color.scheme._onSecondaryContainer
-            : root.colorType === IconButton.Color.Outlined || root.colorType === IconButton.Color.Standard ? Color.scheme._onSurfaceVariant
+        readonly property color iconColor: root.colorType === IconButton.Color.Filled ? Colors.scheme._onPrimary
+            : root.colorType === IconButton.Color.Tonal ? Colors.scheme._onSecondaryContainer
+            : root.colorType === IconButton.Color.Outlined || root.colorType === IconButton.Color.Standard ? Colors.scheme._onSurfaceVariant
             : null
-        readonly property color selectedIconColor: root.colorType === IconButton.Color.Filled ? Color.scheme._onPrimary
-            : root.colorType === IconButton.Color.Tonal ? Color.scheme._onSecondary
-            : root.colorType === IconButton.Color.Outlined ? Color.scheme.inverseOnSurface
-            : root.colorType === IconButton.Color.Standard ? Color.scheme.primary
+        readonly property color selectedIconColor: root.colorType === IconButton.Color.Filled ? Colors.scheme._onPrimary
+            : root.colorType === IconButton.Color.Tonal ? Colors.scheme._onSecondary
+            : root.colorType === IconButton.Color.Outlined ? Colors.scheme.inverseOnSurface
+            : root.colorType === IconButton.Color.Standard ? Colors.scheme.primary
             : null
-        readonly property color unselectedIconColor: root.colorType === IconButton.Color.Filled ? Color.scheme._onSurfaceVariant
-            : root.colorType === IconButton.Color.Tonal ? Color.scheme._onSecondaryContainer
-            : root.colorType === IconButton.Color.Outlined || root.colorType === IconButton.Color.Standard ? Color.scheme._onSurfaceVariant
+        readonly property color unselectedIconColor: root.colorType === IconButton.Color.Filled ? Colors.scheme._onSurfaceVariant
+            : root.colorType === IconButton.Color.Tonal ? Colors.scheme._onSecondaryContainer
+            : root.colorType === IconButton.Color.Outlined || root.colorType === IconButton.Color.Standard ? Colors.scheme._onSurfaceVariant
             : null
 
         anchors.centerIn: parent
-        color: root.checkable && root.enabled && root.internalChecked ? selectedIconColor : root.checkable && root.enabled && !root.internalChecked ? unselectedIconColor : root.enabled ? iconColor : Qt.alpha(Color.scheme._onSurface, 0.38)
+        color: root.checkable && root.enabled && root.internalChecked ? selectedIconColor : root.checkable && root.enabled && !root.internalChecked ? unselectedIconColor : root.enabled ? iconColor : Qt.alpha(Colors.scheme._onSurface, 0.38)
         fill: root.internalChecked ? 1 : mouseArea.containsMouse ? 1 : 0
         fontSize: root.size === IconButton.Size.Xsmall ? 20
             : root.size === IconButton.Size.Small || root.size === IconButton.Size.Medium ? 24

@@ -34,7 +34,7 @@ Variants {
 
             Rectangle {
                 anchors.fill: parent
-                color: Color.darkTheme ? Qt.alpha(Color.scheme.scrim, 0.16) : "transparent"
+                color: Colors.darkTheme ? Qt.alpha(Colors.scheme.scrim, 0.16) : "transparent"
 
                 Behavior on color {
                     ExpressiveSlowColor {}

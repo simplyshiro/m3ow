@@ -61,7 +61,7 @@ Variants {
                     anchors.bottom: parent.bottom
                     anchors.left: parent.left
                     anchors.right: parent.right
-                    color: Color.scheme.surfaceContainer
+                    color: Colors.scheme.surfaceContainer
                     implicitHeight: 64
 
                     Row {

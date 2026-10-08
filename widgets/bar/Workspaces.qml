@@ -68,7 +68,7 @@ Item {
 
                         readonly property bool focused: Hyprland.focusedWorkspace?.id === index + 1
 
-                        color: focused ? Color.scheme.primary : root.occupiedWorkspaces[index + 1] ? Color.scheme._onSurface : Color.scheme._onSurfaceVariant
+                        color: focused ? Colors.scheme.primary : root.occupiedWorkspaces[index + 1] ? Colors.scheme._onSurface : Colors.scheme._onSurfaceVariant
                         implicitHeight: root.pillSize
                         implicitWidth: focused ? root.pillSizeFocused : implicitHeight
                         radius: height
@@ -109,7 +109,7 @@ Item {
 
                 StateLayer {
                     anchors.fill : parent
-                    color: Color.scheme._onSurface
+                    color: Colors.scheme._onSurface
                     radius: container.radius
                 }
             }

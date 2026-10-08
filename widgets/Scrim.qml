@@ -12,5 +12,5 @@ PanelWindow {
     anchors.left: true
     anchors.right: true
     anchors.top: true
-    color: Qt.alpha(Color.scheme.scrim, 0.32)
+    color: Qt.alpha(Colors.scheme.scrim, 0.32)
 }

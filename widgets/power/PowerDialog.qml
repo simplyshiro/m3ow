@@ -64,7 +64,7 @@ Item {
                 readonly property real leadingTrailingSpace: 48
 
                 anchors.centerIn: parent
-                color: Color.scheme.surfaceContainer
+                color: Colors.scheme.surfaceContainer
                 implicitHeight: row.height + leadingTrailingSpace * 2
                 implicitWidth: row.width + leadingTrailingSpace * 2
                 radius: Shape.corner.extraLarge

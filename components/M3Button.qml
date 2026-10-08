@@ -30,20 +30,20 @@ Rectangle {
 
     required property string text
 
-    readonly property color containerColor: colorType === M3Button.Color.Elevated ? Color.scheme.surfaceContainerLow
-        : colorType === M3Button.Color.Filled ? Color.scheme.primary
-        : colorType === M3Button.Color.Tonal ? Color.scheme.secondaryContainer
+    readonly property color containerColor: colorType === M3Button.Color.Elevated ? Colors.scheme.surfaceContainerLow
+        : colorType === M3Button.Color.Filled ? Colors.scheme.primary
+        : colorType === M3Button.Color.Tonal ? Colors.scheme.secondaryContainer
         : colorType === M3Button.Color.Outlined || colorType === M3Button.Color.Standard ? "transparent"
         : null
-    readonly property color selectedContainerColor: colorType === M3Button.Color.Elevated ? Color.scheme.primary
-        : colorType === M3Button.Color.Filled ? Color.scheme.primary
-        : colorType === M3Button.Color.Tonal ? Color.scheme.secondary
-        : colorType === M3Button.Color.Outlined ? Color.scheme.inverseSurface
+    readonly property color selectedContainerColor: colorType === M3Button.Color.Elevated ? Colors.scheme.primary
+        : colorType === M3Button.Color.Filled ? Colors.scheme.primary
+        : colorType === M3Button.Color.Tonal ? Colors.scheme.secondary
+        : colorType === M3Button.Color.Outlined ? Colors.scheme.inverseSurface
         : colorType === M3Button.Color.Standard ? "transparent"
         : null
-    readonly property color unselectedContainerColor: colorType === M3Button.Color.Elevated ? Color.scheme.surfaceContainerLow
-        : colorType === M3Button.Color.Filled ? Color.scheme.surfaceContainer
-        : colorType === M3Button.Color.Tonal ? Color.scheme.secondaryContainer
+    readonly property color unselectedContainerColor: colorType === M3Button.Color.Elevated ? Colors.scheme.surfaceContainerLow
+        : colorType === M3Button.Color.Filled ? Colors.scheme.surfaceContainer
+        : colorType === M3Button.Color.Tonal ? Colors.scheme.secondaryContainer
         : colorType === M3Button.Color.Outlined || colorType === M3Button.Color.Standard ? "transparent"
         : null
 
@@ -80,12 +80,12 @@ Rectangle {
 
     signal clicked
 
-    border.color: colorType === M3Button.Color.Outlined && !internalChecked ? Color.scheme.outlineVariant : "transparent"
+    border.color: colorType === M3Button.Color.Outlined && !internalChecked ? Colors.scheme.outlineVariant : "transparent"
     border.width: size === M3Button.Size.Xsmall || size === M3Button.Size.Small || size === M3Button.Size.Medium ? 1
         : size === M3Button.Size.Large ? 2
         : size === M3Button.Size.Large ? 3
         : null
-    color: enabled && internalChecked ? selectedContainerColor : checkable && enabled && !internalChecked ? unselectedContainerColor : enabled ? containerColor : (colorType === M3Button.Color.Outlined && !enabled && !internalChecked) || colorType === M3Button.Color.Standard ? "transparent" : Qt.alpha(Color.scheme._onSurface, 0.1)
+    color: enabled && internalChecked ? selectedContainerColor : checkable && enabled && !internalChecked ? unselectedContainerColor : enabled ? containerColor : (colorType === M3Button.Color.Outlined && !enabled && !internalChecked) || colorType === M3Button.Color.Standard ? "transparent" : Qt.alpha(Colors.scheme._onSurface, 0.1)
     implicitHeight: size === M3Button.Size.Xsmall ? 32
         : size === M3Button.Size.Small ? 40
         : size === M3Button.Size.Medium ? 56
@@ -151,19 +151,19 @@ Rectangle {
     Row {
         id: row
 
-        readonly property color iconLabelColor: root.colorType === M3Button.Color.Elevated || root.colorType === M3Button.Color.Standard ? Color.scheme.primary
-            : root.colorType === M3Button.Color.Filled ? Color.scheme._onPrimary
-            : root.colorType === M3Button.Color.Tonal ? Color.scheme._onSecondaryContainer
-            : root.colorType === M3Button.Color.Outlined ? Color.scheme._onSurfaceVariant
+        readonly property color iconLabelColor: root.colorType === M3Button.Color.Elevated || root.colorType === M3Button.Color.Standard ? Colors.scheme.primary
+            : root.colorType === M3Button.Color.Filled ? Colors.scheme._onPrimary
+            : root.colorType === M3Button.Color.Tonal ? Colors.scheme._onSecondaryContainer
+            : root.colorType === M3Button.Color.Outlined ? Colors.scheme._onSurfaceVariant
             : null
-        readonly property color selectedIconLabelColor: root.colorType === M3Button.Color.Elevated || root.colorType === M3Button.Color.Filled ? Color.scheme._onPrimary
-            : root.colorType === M3Button.Color.Tonal ? Color.scheme._onSecondary
-            : root.colorType === M3Button.Color.Outlined ? Color.scheme.inverseOnSurface
+        readonly property color selectedIconLabelColor: root.colorType === M3Button.Color.Elevated || root.colorType === M3Button.Color.Filled ? Colors.scheme._onPrimary
+            : root.colorType === M3Button.Color.Tonal ? Colors.scheme._onSecondary
+            : root.colorType === M3Button.Color.Outlined ? Colors.scheme.inverseOnSurface
             : null
-        readonly property color unselectedIconLabelColor: root.colorType === M3Button.Color.Elevated ? Color.scheme.primary
-            : root.colorType === M3Button.Color.Filled ? Color.scheme._onSurfaceVariant
-            : root.colorType === M3Button.Color.Tonal ? Color.scheme._onSecondaryContainer
-            : root.colorType === M3Button.Color.Outlined ? Color.scheme._onSurfaceVariant
+        readonly property color unselectedIconLabelColor: root.colorType === M3Button.Color.Elevated ? Colors.scheme.primary
+            : root.colorType === M3Button.Color.Filled ? Colors.scheme._onSurfaceVariant
+            : root.colorType === M3Button.Color.Tonal ? Colors.scheme._onSecondaryContainer
+            : root.colorType === M3Button.Color.Outlined ? Colors.scheme._onSurfaceVariant
             : null
 
         anchors.centerIn: parent
@@ -174,7 +174,7 @@ Rectangle {
 
         M3Icon {
             anchors.verticalCenter: parent.verticalCenter
-            color: root.checkable && root.enabled && root.internalChecked ? row.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? row.unselectedIconLabelColor : root.enabled ? row.iconLabelColor : Qt.alpha(Color.scheme._onSurface, 0.38)
+            color: root.checkable && root.enabled && root.internalChecked ? row.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? row.unselectedIconLabelColor : root.enabled ? row.iconLabelColor : Qt.alpha(Colors.scheme._onSurface, 0.38)
             fill: root.internalChecked ? 1 : mouseArea.containsMouse ? 1 : 0
             fontSize: root.size === M3Button.Size.Xsmall ? 20
                 : root.size === M3Button.Size.Small || root.size === M3Button.Size.Medium ? 24
@@ -191,7 +191,7 @@ Rectangle {
             id: label
 
             anchors.verticalCenter: parent.verticalCenter
-            color: root.checkable && root.enabled && root.internalChecked ? row.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? row.unselectedIconLabelColor : root.enabled ? row.iconLabelColor : Qt.alpha(Color.scheme._onSurface, 0.38)
+            color: root.checkable && root.enabled && root.internalChecked ? row.selectedIconLabelColor : root.checkable && root.enabled && !root.internalChecked ? row.unselectedIconLabelColor : root.enabled ? row.iconLabelColor : Qt.alpha(Colors.scheme._onSurface, 0.38)
             font.letterSpacing: root.size === M3Button.Size.Xsmall || root.size === M3Button.Size.Small ? 0.1
                 : root.size === M3Button.Size.Medium ? 0.15
                 : root.size === M3Button.Size.Large || root.size === M3Button.Size.Xlarge ? 0

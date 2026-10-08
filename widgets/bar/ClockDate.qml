@@ -22,7 +22,7 @@ Rectangle {
 
         M3Text {
             anchors.verticalCenter: parent.verticalCenter
-            color: Color.scheme._onSurfaceVariant
+            color: Colors.scheme._onSurfaceVariant
             grad: mouseArea.pressed ? -50 : mouseArea.containsMouse ? 50 : 0
             text: Qt.formatDateTime(Clock.date, "ddd, MMM d")
             typeScale: M3Text.TypeScale.LabelLarge
@@ -47,7 +47,7 @@ Rectangle {
 
         StateLayer {
             anchors.fill: parent
-            color: Color.scheme._onSurface
+            color: Colors.scheme._onSurface
             radius: root.radius
         }
     }
