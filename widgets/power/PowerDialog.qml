@@ -2,7 +2,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import Quickshell
-import Quickshell.Hyprland
+import Quickshell.Io
 import Quickshell.Wayland
 
 import qs.components
@@ -103,8 +103,19 @@ Item {
         }
     }
 
-    GlobalShortcut {
-        name: "togglePowerDialog"
-        onPressed: GlobalStates.powerDialogActive = !GlobalStates.powerDialogActive
+    IpcHandler {
+        target: "powerDialog"
+
+        function toggle(): void {
+            GlobalStates.powerDialogActive = !GlobalStates.powerDialogActive;
+        }
+
+        function open(): void {
+            GlobalStates.powerDialogActive = true;
+        }
+
+        function close(): void {
+            GlobalStates.powerDialogActive = false;
+        }
     }
 }
