@@ -1,4 +1,4 @@
-//@ pragma Env QSG_RENDER_LOOP=threaded
+//@ pragma DefaultEnv QSG_RENDER_LOOP=threaded
 
 import QtQuick
 import Quickshell
