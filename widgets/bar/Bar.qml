@@ -71,7 +71,7 @@ Variants {
                         anchors.top: parent.top
                         spacing: 8
 
-                        Workspaces {
+                        Windowsets {
                             anchors.verticalCenter: parent.verticalCenter
                         }
                     }
